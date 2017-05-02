@@ -17,4 +17,15 @@
     int inStock;
   } Book;
 
+  typedef struct User
+  {
+    char username[50];
+    char password[50];
+    int groupID;
+    Book* borrowedBooks;
+  } User;
+
+  //Function that writes an array of integers in a specified file (must already be opened in write or append mode)
+  void write_integers_array(FILE* file, int* array, const int numberElements);
+
 #endif
