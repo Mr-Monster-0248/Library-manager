@@ -3,12 +3,17 @@
 
   #include <stdio.h>
   #include <stdlib.h>
+  #include "auth.h"
+  #include "basic_functions.h"
 
-  tydef struct Book
+  #define USERS_DB_PATH "../databases/users.db"
+  #define BOOKS_DB_PATH "../databases/books.db"
+
+  typedef struct Book
   {
-    char[50] title;
-    char[50] author;
-    char[8] code;
+    char title[50];
+    char author[50];
+    char code[8];
     int inStock;
   } Book;
 
