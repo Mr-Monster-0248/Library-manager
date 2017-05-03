@@ -7,4 +7,6 @@
   #include <string.h>
   #include "basic_functions.h"
 
+  int move_arrow(const int xPos, const int minYCoord, const int maxYCoord);
+
 #endif

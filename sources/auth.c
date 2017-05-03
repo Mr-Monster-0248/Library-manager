@@ -40,7 +40,6 @@ int check_password(char* toCheck, char* password)
 int login_menu()
 {
   int height, width;
-  int arrowPos = 1;
   getmaxyx(stdscr, height, width); //Getting the size of the screen
 
   //Displaying the options
@@ -48,12 +47,10 @@ int login_menu()
   mvprintw(height/3, 5, "Create new account");
   mvprintw(height/3 + 1, 5, "Exit the program");
 
-  //Displaying the arrow on the first line (arrowPos = 1)
-  mvprintw(height/3 - 1, 3, ">");
 
   curs_set(0);
 
   refresh();
 
-  return arrowPos;
+  return move_arrow(3, height/3 - 1, height/3 + 1);
 }

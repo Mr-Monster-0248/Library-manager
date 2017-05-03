@@ -14,10 +14,6 @@ int main(int argc, char** argv)
 
   login_menu();
 
-
-  system("sleep 3");
-
-
   curses_stop();
 
   return EXIT_SUCCESS;

@@ -6,6 +6,7 @@
   #include <string.h>
   #include <curses.h>
   #include "basic_functions.h"
+  #include "display.h"
 
   //Function that returns an array of integers corresponding to the encrypted string
   int* encrypt_to_int(char* string);
