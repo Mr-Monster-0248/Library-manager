@@ -31,5 +31,5 @@ int move_arrow(const int xPos, const int minYCoord, const int maxYCoord)
     }
   } while(pressedKey != 10); //While pressedKey != ENTER
 
-  return currentPos;
+  return currentPos - minYCoord;
 }

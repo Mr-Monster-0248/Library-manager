@@ -1,9 +1,8 @@
 #ifndef DEF_DB
-#define DEF_DB
+  #define DEF_DB
 
   #include <stdio.h>
   #include <stdlib.h>
-  #include "auth.h"
   #include "basic_functions.h"
 
   #define USERS_DB_PATH "../databases/users.db"
@@ -20,7 +19,8 @@
 
   typedef struct User
   {
-    char fName[50], lName[50];
+    char fName[50];
+    char lName[50];
     char mailingAdress[100];
     char email[70];
     char password[50];

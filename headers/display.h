@@ -1,5 +1,5 @@
 #ifndef DEF_DISPLAY
-#define DEF_DISPLAY
+  #define DEF_DISPLAY
 
   #include <curses.h>
   #include <stdio.h>

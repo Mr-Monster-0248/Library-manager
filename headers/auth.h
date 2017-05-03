@@ -1,10 +1,11 @@
-#ifndef DEF_CRYPT
-#define DEF_CRYPT
+#ifndef DEF_AUTH
+#define DEF_AUTH
 
   #include <stdio.h>
   #include <stdlib.h>
   #include <string.h>
   #include <curses.h>
+  #include "DB.h"
   #include "basic_functions.h"
   #include "display.h"
 
@@ -23,5 +24,11 @@
 
   //Function that displays the login menu
   int login_menu();
+
+  //Function that asks the data for a new user to store in the database
+  int ask_new_user_data(User *newUser);
+
+  //Function to ask a password (returns the string typed) and hide it while typing
+  void password_field(int yPos, int xPos, char* password);
 
 #endif
