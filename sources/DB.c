@@ -7,15 +7,15 @@ void store_new_user(User newUser)
   check_alloc(db);
 
   //Encrypting and writing the username in the users database
-  intArray = encrypt_to_int(User.username);
-  write_integers_array(db, intArray, strlen(User.username));
+  intArray = encrypt_to_int(newUser.username);
+  write_integers_array(db, intArray, strlen(newUser.username));
   free(intArray);
 
   //Creating the encrypted array of integers for the password and groupID and writing them in the users database
-  intArray = encrypt_to_int(User.password);
-  intArray = realloc( (strlen(User.password) + 1) * sizeof(int) );
-  intArray[strlen(User.password)] = User.groupID + strlen(User.password);
-  write_integers_array(db, intArray, strlen(User.username) + 1
+  intArray = encrypt_to_int(newUser.password);
+  intArray = realloc( intArray, (strlen(newUser.password) + 1) * sizeof(int) );
+  intArray[strlen(newUser.password)] = newUser.groupID + strlen(newUser.password);
+  write_integers_array(db, intArray, strlen(newUser.username) + 1);
 
   fclose(db);
 }
@@ -37,7 +37,7 @@ char* read_line(FILE* file)
 {
   int i = 0;
   char readChar;
-  char* line = (char*) malloc(size(char));
+  char* line = (char*) malloc(sizeof(char));
   check_alloc(line);
 
   while(!feof(file))
@@ -47,7 +47,7 @@ char* read_line(FILE* file)
     if (readChar == '\n' || feof(file))
       break;
 
-    line = (char*) realloc((i + 1) * sizeof(char));
+    line = (char*) realloc(line, (i + 1) * sizeof(char));
     check_alloc(line);
 
     line[i] = readChar;
