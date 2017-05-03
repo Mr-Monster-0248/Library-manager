@@ -59,14 +59,19 @@ char* read_line(FILE* file)
 }
 
 
-
-
 void copy_to_line(char* path_toCopy, char* path_newFile, const int stopLine)
 {
   int i = 0;
 
-  for (i = 0; i < stopLine; i++)
-  {
+  FILE* file1 = fopen(path_toCopy, "r");
+  FILE* file2 = fopen(path_newFile, "w");
+  check_alloc(file1);
+  check_alloc(file2);
 
-  }
+
+  for (i = 0; i < stopLine && !feof(file1); i++)
+    fprintf(file2, "%s\n", read_line(file1));
+
+  fclose(file1);
+  fclose(file2);
 }
