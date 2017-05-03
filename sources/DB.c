@@ -37,7 +37,7 @@ char* read_line(FILE* file)
 {
   int i = 0;
   char readChar;
-  char* line = (char*) malloc(sizeof(char));
+  char* line = (char*) malloc(2 * sizeof(char));
   check_alloc(line);
 
   while(!feof(file))
@@ -47,11 +47,13 @@ char* read_line(FILE* file)
     if (readChar == '\n' || feof(file))
       break;
 
-    line = (char*) realloc(line, (i + 1) * sizeof(char));
+    line = (char*) realloc(line, (i + 2) * sizeof(char));
     check_alloc(line);
 
-    line[i] = readChar;
+    line[i++] = readChar;
   }
+
+  line[i + 1] = '\0'; //To end the string
 
   return line;
 }
