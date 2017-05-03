@@ -14,15 +14,19 @@
     char title[50];
     char author[50];
     char code[8];
-    int inStock;
+    int copies;
+    int available;
   } Book;
 
   typedef struct User
   {
-    char username[50];
+    char fName[50], lName[50];
+    char mailingAdress[100];
+    char email[70];
     char password[50];
+    char profession[100];
     int groupID;
-    Book* borrowedBooks;
+    char borrowedBooks[3][8];
   } User;
 
   //Function that stores a new user in the users database

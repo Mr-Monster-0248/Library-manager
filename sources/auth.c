@@ -43,14 +43,14 @@ int login_menu()
   getmaxyx(stdscr, height, width); //Getting the size of the screen
 
   //Displaying the options
-  mvprintw(height/3 - 1, 5, "Login (existing account)");
-  mvprintw(height/3, 5, "Create new account");
-  mvprintw(height/3 + 1, 5, "Exit the program");
+  mvprintw(height/3 - 1, width/3, "Login (existing account)");
+  mvprintw(height/3, width/3, "Create new account");
+  mvprintw(height/3 + 1, width/3, "Exit the program");
 
 
   curs_set(0);
 
   refresh();
 
-  return move_arrow(3, height/3 - 1, height/3 + 1);
+  return move_arrow(width/3 - 2, height/3 - 1, height/3 + 1);
 }

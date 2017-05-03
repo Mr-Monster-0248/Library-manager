@@ -1,7 +1,7 @@
 #include "../headers/DB.h"
 
 void store_new_user(User newUser)
-{
+{/*
   int* intArray;
   FILE* db =  fopen(USERS_DB_PATH, "a");
   check_alloc(db);
@@ -18,6 +18,7 @@ void store_new_user(User newUser)
   write_integers_array(db, intArray, strlen(newUser.username) + 1);
 
   fclose(db);
+  */
 }
 
 
