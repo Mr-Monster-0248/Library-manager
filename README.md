@@ -1,5 +1,4 @@
 <h1>Welcome to our project's github folder!</h1>
-------
 This project's aim is to implement a little software (there may be a GUI) to manage a small library with two databases: users and books.
 
 * Each book has a code with 3 letters and 3 digits to identify the book: XXX-YYY<br />(example: NOV-255 stands for the 255th novel of the library)
