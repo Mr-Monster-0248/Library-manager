@@ -1,4 +1,4 @@
-<h1>**Welcome to our project's github folder!**</h1>
+<h1>Welcome to our project's github folder!</h1>
 ---
 This project's aim is to implement a little software (there may be a GUI) to manage a small library with two databases: users and books.
 
