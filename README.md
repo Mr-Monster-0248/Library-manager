@@ -10,7 +10,7 @@ This project's aim is to implement a little software (there may be a GUI) to man
   * Employees must be able to see which clients did not returned their books in time
 ---
 <h2>We had a few ideas to improve the software:</h2>
-* When launching the program, a login page will be displayed, with two options: login to your account or create a new account
-* Depending on your groupID (if you work for the library or not), you will have access to clients or employees functionalities
-* To avoid everyone to modify the storage files (the databases), they will be encrypted in arrays of integers using a function that we implemented ourselves (simple encryption)
-* To have the current date, we will simply use the system date (we must search the functions to obtain the date for both Ubuntu 16.04 and Windows 10)
+* When launching the program, a login page will be displayed, with two options: login to your account or create a new account<br />
+* Depending on your groupID (if you work for the library or not), you will have access to clients or employees functionalities<br />
+* To avoid everyone to modify the storage files (the databases), they will be encrypted in arrays of integers using a function that we implemented ourselves (simple encryption)<br />
+* To have the current date, we will simply use the system date (we must search the functions to obtain the date for both Ubuntu 16.04 and Windows 10)<br />
