@@ -4,6 +4,7 @@
   #include <stdio.h>
   #include <stdlib.h>
   #include <string.h>
+  #include <curses.h>
   #include "basic_functions.h"
 
   //Function that returns an array of integers corresponding to the encrypted string
@@ -18,5 +19,8 @@
       - 1 if good password
   */
   int check_password(char* toCheck, char* password);
+
+  //Function that displays the login menu
+  int login_menu();
 
 #endif

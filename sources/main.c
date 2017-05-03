@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <curses.h>
+#include "../headers/auth.h"
 
 void curses_init();
 void curses_stop();
@@ -10,6 +11,14 @@ void curses_stop();
 int main(int argc, char** argv)
 {
   curses_init();
+
+  login_menu();
+
+
+  system("sleep 3");
+
+
+  curses_stop();
 
   return EXIT_SUCCESS;
 }
