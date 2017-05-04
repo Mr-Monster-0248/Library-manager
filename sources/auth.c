@@ -136,6 +136,7 @@ int ask_new_user_data(User *newUser)
     return 0;
 
   newUser->groupID = 0; //Set user mode to client
+  newUser->numberBBooks = 0; //No books borrowed
 
   return 1;
 }
@@ -174,4 +175,54 @@ void password_field(int yPos, int xPos, char* password)
   }
 
   password[i] = '\0';
+}
+
+
+int find_user(char* emailToFind, User* getUser)
+{
+  FILE* user_db = fopen(USERS_DB_PATH, "r");
+  int i = 0;
+  User currentUser;
+
+  check_alloc(user_db);
+
+  //Exploring the database
+  do {
+    currentUser = load_next_user(user_db);
+  } while(!feof(user_db) && strcmp(currentUser.email, emailToFind) != 0);
+
+  fclose(user_db);
+
+  //If user not found
+  if (strcmp(currentUser.email, emailToFind) != 0)
+    return 0;
+
+  //If user found
+  strcpy(getUser->email, currentUser.email);
+  strcpy(getUser->password, currentUser.password);
+  strcpy(getUser->fName, currentUser.fName);
+  strcpy(getUser->lName, currentUser.lName);
+  strcpy(getUser->profession, currentUser.profession);
+  strcpy(getUser->mailingAdress, currentUser.mailingAdress);
+  getUser->groupID = currentUser.groupID;
+  getUser->numberBBooks = currentUser.numberBBooks;
+
+  for (i = 0; i < currentUser.numberBBooks; i++)
+    strcpy(getUser->borrowedBooks[i], currentUser.borrowedBooks[i]);
+
+
+  return 1;
+}
+
+
+int login()
+{
+  int height, width;
+  char* askedEmail = (char*) malloc(80 * sizeof(int));
+
+  clear();
+  mvprintw()
+
+
+  return 1;
 }

@@ -25,4 +25,11 @@
   //Function to ask a password (returns the string typed) and hide it while typing
   void password_field(int yPos, int xPos, char* password);
 
+  //Function to get a user by his email
+  /* RETURN VALUES
+    - 0: no user found
+    - 1: user found and stocked in getUser (parameter)
+  */
+  int find_user(char* email, User* getUser);
+
 #endif

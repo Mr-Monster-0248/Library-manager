@@ -26,8 +26,9 @@
     char email[70];
     char password[50];
     char profession[100];
-    int groupID;
     char borrowedBooks[3][8];
+    int groupID;
+    int numberBBooks;
   } User;
 
   //Function that stores a new user in the users database
@@ -41,5 +42,11 @@
 
   //Function that creates a copy of a file until a given line from which nothing will be copied (including this specific line)
   void copy_to_line(char* path_toCopy, char* path_newFile, const int stopLine);
+
+  //Function to return the next user read from user database given as parameter (must already be opened in read mode)
+  User load_next_user(FILE* user_db);
+
+  //Function that returns an array of integers (whole line read in database)
+  int* return_int_line(FILE* user_db, int* numberChars);
 
 #endif
