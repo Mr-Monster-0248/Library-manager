@@ -4,9 +4,10 @@
   #include <stdio.h>
   #include <stdlib.h>
   #include "basic_functions.h"
+  #include "crypting.h"
 
-  #define USERS_DB_PATH "../databases/users.db"
-  #define BOOKS_DB_PATH "../databases/books.db"
+  #define USERS_DB_PATH "databases/users.db"
+  #define BOOKS_DB_PATH "databases/books.db"
 
   typedef struct Book
   {

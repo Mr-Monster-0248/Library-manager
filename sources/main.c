@@ -23,6 +23,7 @@ int main(int argc, char** argv)
 
       case 1:
         while(!ask_new_user_data(&myUser));
+        store_new_user(myUser);
         clear();
       break;
 

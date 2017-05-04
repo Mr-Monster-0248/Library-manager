@@ -1,24 +1,41 @@
 #include "../headers/DB.h"
 
 void store_new_user(User newUser)
-{/*
-  int* intArray;
-  FILE* db =  fopen(USERS_DB_PATH, "a");
-  check_alloc(db);
+{
+  int *cryptedEmail = NULL, *cryptedPassword = NULL, *cryptedFName = NULL, *cryptedLName = NULL, *cryptedProfession = NULL, *cryptedMAdress = NULL;
+  FILE* users_db = fopen(USERS_DB_PATH, "a");
 
-  //Encrypting and writing the username in the users database
-  intArray = encrypt_to_int(newUser.username);
-  write_integers_array(db, intArray, strlen(newUser.username));
-  free(intArray);
+  check_alloc(users_db); //Checking file opening
 
-  //Creating the encrypted array of integers for the password and groupID and writing them in the users database
-  intArray = encrypt_to_int(newUser.password);
-  intArray = realloc( intArray, (strlen(newUser.password) + 1) * sizeof(int) );
-  intArray[strlen(newUser.password)] = newUser.groupID + strlen(newUser.password);
-  write_integers_array(db, intArray, strlen(newUser.username) + 1);
+  //Crypting data
+  cryptedEmail = encrypt_to_int(newUser.email);
+  cryptedPassword = encrypt_to_int(newUser.password);
+  cryptedFName = encrypt_to_int(newUser.fName);
+  cryptedLName = encrypt_to_int(newUser.lName);
+  cryptedProfession = encrypt_to_int(newUser.profession);
+  cryptedMAdress = encrypt_to_int(newUser.mailingAdress);
 
-  fclose(db);
-  */
+  //Hidding groupID in crypted password (crypting it at the end of crypted password)
+  cryptedPassword = realloc(cryptedPassword, (strlen(newUser.password) + 1) * sizeof(int));
+  check_alloc(cryptedPassword);
+  cryptedPassword[strlen(newUser.password)] = newUser.groupID + strlen(newUser.password) + 1;
+
+
+  //Writing data in the database
+  write_integers_array(users_db, cryptedEmail, strlen(newUser.email));
+  write_integers_array(users_db, cryptedPassword, strlen(newUser.password) + 1);
+  write_integers_array(users_db, cryptedFName, strlen(newUser.fName));
+  write_integers_array(users_db, cryptedLName, strlen(newUser.lName));
+  write_integers_array(users_db, cryptedProfession, strlen(newUser.profession));
+  write_integers_array(users_db, cryptedMAdress, strlen(newUser.mailingAdress));
+
+  //Freeing arrays
+  free(cryptedEmail);
+  free(cryptedPassword);
+  free(cryptedFName);
+  free(cryptedLName);
+  free(cryptedProfession);
+  free(cryptedMAdress);
 }
 
 
@@ -75,4 +92,12 @@ void copy_to_line(char* path_toCopy, char* path_newFile, const int stopLine)
 
   fclose(file1);
   fclose(file2);
+}
+
+
+User load_next_user(FILE* user_db)
+{
+  check_alloc(user_db);
+
+
 }

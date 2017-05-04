@@ -1,32 +1,6 @@
 #include "../headers/auth.h"
 
 
-int* encrypt_to_int(char* string)
-{
-  int i = 0;
-  int* crypted = (int*) malloc(strlen(string) * sizeof(int));
-  check_alloc(crypted);
-
-  for (i = 0; i < strlen(string); i++)
-    crypted[i] = string[i] + i + 1;
-
-  return crypted;
-}
-
-
-char* decrypt_to_string(int* encrypted, const int numberChars)
-{
-  int i = 0;
-  char* string = (char*) malloc(numberChars * sizeof(char));
-  check_alloc(string);
-
-  for (i = 0; i < numberChars; i++)
-    string[i] = (char) (encrypted[i] - i - 1);
-
-  return string;
-}
-
-
 int check_password(char* toCheck, char* password)
 {
   //If password is good
@@ -88,24 +62,41 @@ int ask_new_user_data(User *newUser)
   refresh();
 
   //Asking email adress
-  move(2 * height/5, width/4 + strlen("Email adress    (max.69 characters): "));
-  getnstr(newUser->email, 69);
+  do
+  {
+    mvprintw(2 * height/5, width/4 + strlen("Email adress    (max.69 characters): "), "                                                                 ");
+    move(2 * height/5, width/4 + strlen("Email adress    (max.69 characters): "));
+    refresh();
+    getnstr(newUser->email, 69);
+  } while (strcmp(newUser->email, "") == 0); //While verify email function not implemented
 
   //Asking first name
-  move(2 * height/5 + 1, width/4 + strlen("First name     (max. 49 characters): "));
-  getnstr(newUser->fName, 49);
+  do
+  {
+    move(2 * height/5 + 1, width/4 + strlen("First name     (max. 49 characters): "));
+    getnstr(newUser->fName, 49);
+  } while (strcmp(newUser->fName, "") == 0);
 
   //Asking last name
-  move(2 * height/5 + 2, width/4 + strlen("Last name      (max. 49 characters): "));
-  getnstr(newUser->lName, 49);
+  do
+  {
+    move(2 * height/5 + 2, width/4 + strlen("Last name      (max. 49 characters): "));
+    getnstr(newUser->lName, 49);
+  } while (strcmp(newUser->lName, "") == 0);
 
   //Asking mailing adress
-  move(2 * height/5 + 3, width/4 + strlen("Mailing adress (max. 99 characters): "));
-  getnstr(newUser->mailingAdress, 99);
+  do
+  {
+    move(2 * height/5 + 3, width/4 + strlen("Mailing adress (max. 99 characters): "));
+    getnstr(newUser->mailingAdress, 99);
+  } while (strcmp(newUser->mailingAdress, "") == 0);
 
   //Asking profession
-  move(2 * height/5 + 4, width/4 + strlen("Profession     (max. 99 characters): "));
-  getnstr(newUser->profession, 99);
+  do
+  {
+    move(2 * height/5 + 4, width/4 + strlen("Profession     (max. 99 characters): "));
+    getnstr(newUser->profession, 99);
+  } while (strcmp(newUser->profession, "") == 0);
 
 
   //Asking password
@@ -163,7 +154,7 @@ void password_field(int yPos, int xPos, char* password)
     move(yPos, xPos++);
     pressedKey = getch();
 
-    if (pressedKey == KEY_BACKSPACE && i > 0)
+    if (pressedKey == 8 && i > 0)
     {
       //Erasing the previous star
       mvprintw(yPos, --xPos, " ");
@@ -174,6 +165,9 @@ void password_field(int yPos, int xPos, char* password)
     //If unvalid character
     if (pressedKey < 32 && pressedKey > 126)
       continue;
+
+    if (pressedKey == 10) //If ENTER key pressed
+      break;
 
     printw("*");
     password[i++] = pressedKey;
