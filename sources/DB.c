@@ -119,6 +119,12 @@ User load_next_user(FILE* user_db)
 
   check_alloc(user_db);
 
+  if (feof(user_db))
+  {
+    system("echo user__found >> ta_chatte");
+    return myUser;
+  }
+
   /*#################################
   #                                 #
   #     Reading and decrypting      #
@@ -126,10 +132,12 @@ User load_next_user(FILE* user_db)
   #################################*/
 
   //email
+  system("echo email >> ta_chatte");
   cryptedEmail = return_int_line(user_db, &numberChars);
   dEmail = decrypt_to_string(cryptedEmail, numberChars);
 
   //password
+  system("echo password >> ta_chatte");
   cryptedPassword = return_int_line(user_db, &numberChars);
   dPassword = decrypt_to_string(cryptedPassword, numberChars - 1);
 
@@ -207,4 +215,22 @@ int* return_int_line(FILE* user_db, int* numberChars)
   *numberChars = i + 1;
 
   return line;
+}
+
+
+void copy_User(User* to, User from)
+{
+  int i = 0;
+
+  strcpy(to->email, from.email);
+  strcpy(to->password, from.password);
+  strcpy(to->fName, from.fName);
+  strcpy(to->lName, from.lName);
+  strcpy(to->profession, from.profession);
+  strcpy(to->mailingAdress, from.mailingAdress);
+  to->numberBBooks = from.numberBBooks;
+  to->groupID = from.groupID;
+
+  for (i = 0; i < from.numberBBooks; i++)
+    strcpy(to->borrowedBooks[i], from.borrowedBooks[i]);
 }

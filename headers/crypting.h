@@ -4,7 +4,7 @@
   #include <stdio.h>
   #include <stdlib.h>
   #include <string.h>
-  #include <curses.h>
+  
   #include "basic_functions.h"
 
   //Function that returns an array of integers corresponding to the encrypted string

@@ -3,6 +3,7 @@
 
   #include <stdio.h>
   #include <stdlib.h>
+  
   #include "basic_functions.h"
   #include "crypting.h"
 
@@ -48,5 +49,8 @@
 
   //Function that returns an array of integers (whole line read in database)
   int* return_int_line(FILE* user_db, int* numberChars);
+
+  //Function to copy a user to another one
+  void copy_User(User* to, User from);
 
 #endif

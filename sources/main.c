@@ -1,61 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <curses.h>
 #include "../headers/DB.h"
 #include "../headers/auth.h"
-#include "../headers/display.h"
 #include "../headers/basic_functions.h"
+#ifdef __WIN32__
+  #include "../headers/UI_windows.h"
+#else
+  #include "../headers/UI_unix.h"
+#endif
 
-void curses_init();
-void curses_stop();
 
 
 int main(int argc, char** argv)
 {
   User myUser;
 
-  curses_init();
+  UI_init();
 
   switch(login_menu())
   {
       case 0:
+        //login(&myUser);
       break;
 
       case 1:
         while(!ask_new_user_data(&myUser));
         store_new_user(myUser);
-        clear();
-      break;
-
-      case 2:
       break;
 
       default:
       break;
   }
 
-  curses_stop();
+  UI_stop();
 
   return EXIT_SUCCESS;
-}
-
-
-void curses_init()
-{
-  //Init curses
-  initscr();
-
-  //Deactivation of buffer at TTY pilot
-  cbreak();
-
-  //Deactivation of automatic display of entries
-  noecho();
-
-  //Allow keyboard capture (including arrow keys)
-  keypad(stdscr, TRUE);
-}
-
-void curses_stop()
-{
-  endwin();
 }
