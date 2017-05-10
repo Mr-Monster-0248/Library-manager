@@ -23,13 +23,14 @@ void store_new_user(User newUser)
 
 
     //Writing data in the database
+    fprintf(users_db, "\n");
     write_integers_array(users_db, cryptedEmail, strlen(newUser.email));
     write_integers_array(users_db, cryptedPassword, strlen(newUser.password) + 1);
     write_integers_array(users_db, cryptedFName, strlen(newUser.fName));
     write_integers_array(users_db, cryptedLName, strlen(newUser.lName));
     write_integers_array(users_db, cryptedProfession, strlen(newUser.profession));
     write_integers_array(users_db, cryptedMAdress, strlen(newUser.mailingAdress));
-    fprintf(users_db, "%d\n", newUser.numberBBooks);
+    fprintf(users_db, "%d", newUser.numberBBooks);
 
     for (i = 0; i < newUser.numberBBooks; i++)
     {
@@ -120,10 +121,7 @@ User load_next_user(FILE* user_db)
     check_alloc(user_db);
 
     if (feof(user_db))
-    {
-        system("echo user__found >> ta_chatte");
         return myUser;
-    }
 
     /*#################################
     #                                 #
@@ -132,12 +130,10 @@ User load_next_user(FILE* user_db)
     #################################*/
 
     //email
-    system("echo email >> ta_chatte");
     cryptedEmail = return_int_line(user_db, &numberChars);
     dEmail = decrypt_to_string(cryptedEmail, numberChars);
 
     //password
-    system("echo password >> ta_chatte");
     cryptedPassword = return_int_line(user_db, &numberChars);
     dPassword = decrypt_to_string(cryptedPassword, numberChars - 1);
 

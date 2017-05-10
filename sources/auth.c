@@ -25,25 +25,16 @@ int find_user(char* emailToFind, User* getUser)
 
     check_alloc(user_db);
 
-    system("touch ta_chatte");
-
     //Exploring the database
     do {
-        system("echo debut__d_exploration >> ta_chatte");
         currentUser = load_next_user(user_db);
-        system("echo fin__d_exploration >> ta_chatte");
     } while(!feof(user_db) && strcmp(currentUser.email, emailToFind) != 0);
-
-    system("echo caca >> ta_chatte");
 
     fclose(user_db);
 
     //If user not found
     if (strcmp(currentUser.email, emailToFind) != 0)
-    {
-        fopen("balise de bite 1", "w");
         return 0;
-    }
 
     copy_User(getUser, currentUser);
 
