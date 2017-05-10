@@ -162,7 +162,7 @@ int new_user_form(User *newUser)
   return 1;
 }
 
-void clear()
+void clear_screen()
 {
   CLEAR_SCREEN();
 }

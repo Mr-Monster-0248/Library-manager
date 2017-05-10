@@ -36,7 +36,7 @@ int main(int argc, char** argv)
         break;
     }
 
-    clear();
+    clear_screen();
   } while (1);
 
   return EXIT_SUCCESS;

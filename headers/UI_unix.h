@@ -22,4 +22,7 @@ void password_field(int yPos, int xPos, char* password);
 //Function to display and fill a form for a new User
 int new_user_form(User *newUser);
 
+//So that the curses.h clear() function is accessible from everywhere
+void clear_screen();
+
 #endif

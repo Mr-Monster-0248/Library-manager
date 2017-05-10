@@ -303,3 +303,9 @@ int login(User* currentUser)
   fclose(logFile);
   return 0;
 }
+
+
+void clear_screen()
+{
+  clear();
+}
