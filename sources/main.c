@@ -17,22 +17,25 @@ int main(int argc, char** argv)
 
   UI_init();
 
-  switch(login_menu())
+  do
   {
-      case 0:
-        //login(&myUser);
-      break;
+    switch(login_menu())
+    {
+        case 0:
+          login(&myUser);
+        break;
 
-      case 1:
-        while(!ask_new_user_data(&myUser));
-        store_new_user(myUser);
-      break;
+        case 1:
+          while(!ask_new_user_data(&myUser));
+          store_new_user(myUser);
+        break;
 
-      default:
-      break;
-  }
-
-  UI_stop();
+        default:
+          UI_stop();
+          return EXIT_SUCCESS;
+        break;
+    }
+  } while (1);
 
   return EXIT_SUCCESS;
 }

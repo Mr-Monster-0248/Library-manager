@@ -86,15 +86,20 @@ void password_field(int yPos, int xPos, char* password)
   noecho();
   curs_set(1);
 
+  system("touch ma_bite");
+
   while (i < 49 && pressedKey != 10) //While still typing the password
   {
     move(yPos, xPos++);
     pressedKey = getch();
 
-    if (pressedKey == 8 && i > 0)
+    if (pressedKey == KEY_BACKSPACE && i > 0)
     {
+      system("echo mst >> ma_bite");
+
       //Erasing the previous star
-      mvprintw(yPos, --xPos, " ");
+      mvprintw(yPos, xPos - 2, " ");
+      xPos -= 2;
       i--;
       continue;
     }
