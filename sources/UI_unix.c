@@ -154,6 +154,7 @@ int new_user_form(User *newUser)
         move(2 * height/5, width/4 + strlen("Email adress    (max.69 characters): "));
         refresh();
         getnstr(newUser->email, 69);
+        remove_end_spaces(newUser->email);
     } while (strcmp(newUser->email, "") == 0); //While verify email function not implemented
 
     //Asking first name
@@ -161,6 +162,7 @@ int new_user_form(User *newUser)
     {
         move(2 * height/5 + 1, width/4 + strlen("First name     (max. 49 characters): "));
         getnstr(newUser->fName, 49);
+        remove_end_spaces(newUser->fName);
     } while (strcmp(newUser->fName, "") == 0);
 
     //Asking last name
@@ -168,6 +170,7 @@ int new_user_form(User *newUser)
     {
         move(2 * height/5 + 2, width/4 + strlen("Last name      (max. 49 characters): "));
         getnstr(newUser->lName, 49);
+        remove_end_spaces(newUser->lName);
     } while (strcmp(newUser->lName, "") == 0);
 
     //Asking mailing adress
@@ -175,6 +178,7 @@ int new_user_form(User *newUser)
     {
         move(2 * height/5 + 3, width/4 + strlen("Mailing adress (max. 99 characters): "));
         getnstr(newUser->mailingAdress, 99);
+        remove_end_spaces(newUser->mailingAdress);
     } while (strcmp(newUser->mailingAdress, "") == 0);
 
     //Asking profession
@@ -182,6 +186,7 @@ int new_user_form(User *newUser)
     {
         move(2 * height/5 + 4, width/4 + strlen("Profession     (max. 99 characters): "));
         getnstr(newUser->profession, 99);
+        remove_end_spaces(newUser->profession);
     } while (strcmp(newUser->profession, "") == 0);
 
 
@@ -234,11 +239,6 @@ int login(User* currentUser)
     char* askedEmail = (char*) malloc(50 * sizeof(char));
     char* askedPassword = (char*) malloc(50 * sizeof(char));
     User myUser;
-    FILE* logFile = NULL;
-    logFile = fopen("log", "w");
-    check_alloc(logFile);
-
-    fprintf(logFile, "Premiere balise de bite\n");
 
     getmaxyx(stdscr, height, width);
 
@@ -252,11 +252,9 @@ int login(User* currentUser)
     echo();
     curs_set(1); //Setting cursor visible
 
-    fprintf(logFile, "Balise de bite\n");
 
     //Getting a valid e-mail adress
     do {
-        fprintf(logFile, "Lap of email loop\n");
         mvprintw(height/5, width/5 + strlen("E-mail: "), "                                                  ");
         refresh();
         move(height/5, width/5 + strlen("E-mail: "));
@@ -265,7 +263,6 @@ int login(User* currentUser)
         //Verifying if the email adress is stored in the database
         if(find_user(askedEmail, &myUser))
         {
-            fprintf(logFile, "user found, exiting email loop\n");
             userOK = 1;
             break;
         }
@@ -275,12 +272,10 @@ int login(User* currentUser)
 
     remainingAttempts = 3;
 
-    fprintf(logFile, "Just before second loop (password)\n");
 
     //Asking password
     while(userOK == 1 && remainingAttempts > 0)
     {
-        fprintf(logFile, "Password loop lap\n");
         noecho();
         mvprintw(height/5 + 5, width/5 - 2 + strlen("Password: "), "                                                  ");
         refresh();
@@ -288,17 +283,12 @@ int login(User* currentUser)
 
         if (!strcmp(askedPassword, myUser.password)) //If password found
         {
-            fprintf(logFile, "User found & password match\n");
-            fclose(logFile);
             copy_User(currentUser, myUser);
             return 1;
         }
 
         mvprintw(height/5 + 7, width/5, "Error: wrong password. %d attempts remaining", --remainingAttempts);
     }
-
-    fprintf(logFile, "User not found or no password match\n");
-    fclose(logFile);
     return 0;
 }
 

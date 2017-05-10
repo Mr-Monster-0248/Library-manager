@@ -118,6 +118,8 @@ User load_next_user(FILE* user_db)
     char *dEmail = NULL, *dPassword = NULL, *dFName = NULL, *dLName = NULL, *dProfession = NULL, *dMAdress = NULL;
     int numberBooks = 0, i = 0, numberChars = 0;
 
+    FILE* test_file = fopen("log", "w");
+
     check_alloc(user_db);
 
     if (feof(user_db))
@@ -132,26 +134,32 @@ User load_next_user(FILE* user_db)
     //email
     cryptedEmail = return_int_line(user_db, &numberChars);
     dEmail = decrypt_to_string(cryptedEmail, numberChars);
+    fprintf(test_file, "mail: \"%s\"\n", dEmail);
 
     //password
     cryptedPassword = return_int_line(user_db, &numberChars);
-    dPassword = decrypt_to_string(cryptedPassword, numberChars - 1);
+    dPassword = decrypt_to_string(cryptedPassword, numberChars);
+    fprintf(test_file, "password: \"%s\"\n", dPassword);
 
     //first name
     cryptedFName = return_int_line(user_db, &numberChars);
     dFName = decrypt_to_string(cryptedFName, numberChars);
+    fprintf(test_file, "first name: \"%s\"\n", dFName);
 
     //last name
     cryptedLName = return_int_line(user_db, &numberChars);
     dLName = decrypt_to_string(cryptedLName, numberChars);
+    fprintf(test_file, "last name: \"%s\"\n", dLName);
 
     //profession
     cryptedProfession = return_int_line(user_db, &numberChars);
     dProfession = decrypt_to_string(cryptedProfession, numberChars);
+    fprintf(test_file, "profession: \"%s\"\n", dProfession);
 
     //mailing adress
     cryptedMAdress = return_int_line(user_db, &numberChars);
     dMAdress = decrypt_to_string(cryptedMAdress, numberChars);
+    fprintf(test_file, "mailing adress: \"%s\"\n", dMAdress);
 
     //number of borrowed books
     fscanf(user_db, "%d", &numberBooks);
@@ -208,7 +216,7 @@ int* return_int_line(FILE* user_db, int* numberChars)
         line[i++] = read;
     }
 
-    *numberChars = i + 1;
+    *numberChars = i;
 
     return line;
 }

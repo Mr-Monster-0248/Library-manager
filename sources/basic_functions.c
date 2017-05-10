@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 #include "../headers/basic_functions.h"
 
@@ -306,4 +307,14 @@ void print_file_to(const char* filePath, FILE* output)
 		fprintf(output, "%c", fgetc(file)); //Reading a character from the file and printing it to the output stream of file
 
 		fclose(file); //Closing the file
+}
+
+//Function to remove spaces at the end of a string (recursive function)
+void remove_end_spaces(char* string)
+{
+    if (string[strlen(string) - 1] == ' ')
+    {
+        string[strlen(string) - 1] = '\0';
+        remove_end_spaces(string);
+    }
 }

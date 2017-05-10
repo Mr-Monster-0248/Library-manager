@@ -108,6 +108,9 @@
 	//Function that reads and prints the content of a file to a given output file or stream
 	void print_file_to(const char* filePath, FILE* output);
 
+	//Function to remove spaces at the end of a string (recursive function)
+	void remove_end_spaces(char* string);
+
 	/*###########################################################################
 	#													FUNCTIONS MACROS																	#
 	###########################################################################*/

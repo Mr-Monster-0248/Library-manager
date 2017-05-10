@@ -8,7 +8,7 @@ int* encrypt_to_int(char* string)
     check_alloc(crypted);
 
     for (i = 0; i < strlen(string); i++)
-    crypted[i] = string[i] + i + 1;
+        crypted[i] = string[i] + i + 1;
 
     return crypted;
 }
@@ -21,7 +21,7 @@ char* decrypt_to_string(int* encrypted, const int numberChars)
     check_alloc(string);
 
     for (i = 0; i < numberChars; i++)
-    string[i] = (char) (encrypted[i] - i - 1);
+        string[i] = (char) (encrypted[i] - i - 1);
 
     return string;
 }

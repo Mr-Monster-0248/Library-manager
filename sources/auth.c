@@ -38,7 +38,5 @@ int find_user(char* emailToFind, User* getUser)
 
     copy_User(getUser, currentUser);
 
-    fopen("balise de bite 2", "w");
-
     return 1;
 }
