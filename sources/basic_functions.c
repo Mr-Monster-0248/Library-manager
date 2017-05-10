@@ -315,6 +315,6 @@ void remove_end_char(char* string, const char c)
     if (string[strlen(string) - 1] == c)
     {
         string[strlen(string) - 1] = '\0';
-        remove_end_char(string);
+        remove_end_char(string, c);
     }
 }
