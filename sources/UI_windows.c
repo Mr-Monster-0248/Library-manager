@@ -177,3 +177,10 @@ void disp(char* string)
 {
     printf("%s", string);
 }
+
+void display_user_info(User myUser)
+{
+    printf("%s %s - %s\n", myUser.fName, myUser.lName, myUser.profession);
+    printf("E-mail: %s\n", myUser.email);
+    printf("Mailing adress: %s\"\n", myUser.mailingAdress);
+}

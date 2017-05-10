@@ -25,4 +25,6 @@ void display_book_info(Book myBook);
 
 void disp(char* string);
 
+void display_user_info(User myUser);
+
 #endif

@@ -310,3 +310,12 @@ void disp(char* string)
 {
     printw("%s", string);
 }
+
+void display_user_info(User myUser)
+{
+    curs_set(0);
+    move(1,1);
+    printw("%s %s - %s\n", myUser.fName, myUser.lName, myUser.profession);
+    printw("E-mail: %s\n", myUser.email);
+    printw("Mailing adress: %s\"\n", myUser.mailingAdress);
+}

@@ -31,4 +31,7 @@ void display_book_info(Book myBook);
 //display any string without having to choose unix or windows version
 void disp(char* string);
 
+//display every informations for a specified user
+void display_user_info(User myUser)
+
 #endif
