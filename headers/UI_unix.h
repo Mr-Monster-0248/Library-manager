@@ -25,4 +25,7 @@ int new_user_form(User *newUser);
 //So that the curses.h clear() function is accessible from everywhere
 void clear_screen();
 
+//display every informations for a specified book
+void display_book_info(Book myBook);
+
 #endif

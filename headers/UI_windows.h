@@ -21,4 +21,6 @@ int new_user_form(User *newUser);
 
 void clear_screen();
 
+void display_book_info(Book myBook);
+
 #endif
