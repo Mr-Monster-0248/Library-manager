@@ -56,4 +56,20 @@ void copy_User(User* to, User from);
 //Function to return the next book read from book database given as parameter (must already be opened in read mode)
 Book load_next_book(FILE* books_db);
 
+//Function to display all the books of the library (display the entire database)
+void display_book_db();
+
+//Function to display all the available books
+void display_available_books();
+
+void display_books_by_author();
+
+void display_books_by_title();
+
+void display_book_by_code();
+
+void search_user_by_name();
+
+void search_user_by_email();
+
 #endif

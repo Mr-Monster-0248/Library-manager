@@ -1,4 +1,9 @@
 #include "../headers/DB.h"
+#ifdef __WIN32__
+#include "../headers/UI_windows.h"
+#else
+#include "../headers/UI_unix.h"
+#endif
 
 void store_new_user(User newUser)
 {
@@ -244,4 +249,171 @@ Book load_next_book(FILE* books_db)
     fgetc(books_db); //To read the empty line
 
     return myBook;
+}
+
+
+void display_book_db()
+{
+    FILE* books_db = fopen(BOOKS_DB_PATH, "r");
+    check_alloc(books_db);
+
+    while (!feof(books_db))
+        display_book_info(load_next_book(books_db));
+
+    fclose(books_db);
+}
+
+
+void display_available_books()
+{
+    Book currentBook;
+    FILE* books_db = fopen(BOOKS_DB_PATH, "r");
+    check_alloc(books_db);
+
+    while (!feof(books_db))
+    {
+        currentBook = load_next_book(books_db);
+
+        if (currentBook.available > 0)
+            display_book_info(currentBook);
+    }
+
+    fclose(books_db);
+}
+
+
+void display_books_by_author()
+{
+    char* authorName = ask_string_info("Please type the author's name: "); //Function to implement
+    Book currentBook;
+    FILE* books_db = fopen(BOOKS_DB_PATH, "r");
+    check_alloc(books_db);
+
+    while (!feof(books_db))
+    {
+        currentBook = load_next_book(books_db);
+
+        if (strcmp(currentBook.author, authorName) == 0) //If book author matches with asked author
+            display_book_info(currentBook);
+    }
+
+    fclose(books_db);
+    free(authorName);
+}
+
+
+void display_books_by_title()
+{
+    char* bookTitle = ask_string_info("Please type the book's title: ");
+    Book currentBook;
+    FILE* books_db = fopen(BOOKS_DB_PATH, "r");
+    check_alloc(books_db);
+
+    while (!feof(books_db))
+    {
+        currentBook = load_next_book(books_db);
+
+        if (strcmp(currentBook.title, bookTitle) == 0) //If current book's title matches with the one asked
+            display_book_info(currentBook);
+    }
+
+    fclose(books_db);
+    free(bookTitle);
+}
+
+
+void display_book_by_code()
+{
+    char* bookCode = ask_string_info("Please type the code of the book (XXX-YYY): ");
+    Book currentBook;
+    FILE* books_db = fopen(BOOKS_DB_PATH, "r");
+    check_alloc(books_db);
+
+    while (!feof(books_db))
+    {
+        currentBook = load_next_book(books_db);
+
+        if (strcmp(currentBook.code, bookCode) == 0)
+        {
+            display_book_info(currentBook);
+            free(bookCode);
+            fclose(books_db);
+
+            return;
+        }
+    }
+
+    disp("No books found for code \"");
+    disp(bookCode);
+    disp("\"\n");
+
+    fclose(books_db);
+    free(bookCode);
+}
+
+
+void search_user_by_name()
+{
+    char *firstName = ask_string_info("Enter first name: "), *lastName = ask_string_info("Enter last name: ");
+    FILE* users_db = fopen(USERS_DB_PATH, "r");
+    User currentUser;
+
+    check_alloc(users_db);
+
+    while (!feof(users_db))
+    {
+        currentUser = load_next_user(users_db);
+
+        if (!strcmp(currentUser.fName, firstName) && !strcmp(currentUser.lName, lastName))
+        {
+            display_user_info(currentUser);
+
+            free(firstName);
+            free(lastName);
+            fclose(users_db);
+            return;
+        }
+    }
+
+    disp("User ");
+    disp(firstName);
+    disp(" ");
+    disp(lastName);
+    disp(" not found in database\n");
+
+    free(firstName);
+    free(lastName);
+    fclose(users_db);
+}
+
+
+void search_user_by_email()
+{
+    char* eMail = ask_string_info("Enter user's e-mail: ");
+    FILE* users_db = fopen(USERS_DB_PATH, "r");
+    User currentUser;
+
+    check_alloc(users_db);
+
+    while (!feof(users_db))
+    {
+        currentUser = load_next_user(users_db);
+
+        if (!strcmp(currentUser.email, eMail))
+        {
+            display_user_info(currentUser);
+
+            free(eMail);
+            fclose(users_db);
+
+            return;
+        }
+    }
+
+    disp("Cannot find user with e-mail ");
+    disp(eMail);
+    disp("\n");
+
+    fclose(users_db);
+    free(eMail);
 }
