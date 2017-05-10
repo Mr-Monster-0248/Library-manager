@@ -309,12 +309,12 @@ void print_file_to(const char* filePath, FILE* output)
 		fclose(file); //Closing the file
 }
 
-//Function to remove spaces at the end of a string (recursive function)
-void remove_end_spaces(char* string)
+//Function to remove any char at the end of a string (recursive function)
+void remove_end_char(char* string, const char c)
 {
-    if (string[strlen(string) - 1] == ' ')
+    if (string[strlen(string) - 1] == c)
     {
         string[strlen(string) - 1] = '\0';
-        remove_end_spaces(string);
+        remove_end_char(string);
     }
 }

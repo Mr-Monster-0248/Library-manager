@@ -154,7 +154,7 @@ int new_user_form(User *newUser)
         move(2 * height/5, width/4 + strlen("Email adress    (max.69 characters): "));
         refresh();
         getnstr(newUser->email, 69);
-        remove_end_spaces(newUser->email);
+        remove_end_char(newUser->email, ' ');
     } while (strcmp(newUser->email, "") == 0); //While verify email function not implemented
 
     //Asking first name
@@ -162,7 +162,7 @@ int new_user_form(User *newUser)
     {
         move(2 * height/5 + 1, width/4 + strlen("First name     (max. 49 characters): "));
         getnstr(newUser->fName, 49);
-        remove_end_spaces(newUser->fName);
+        remove_end_char(newUser->fName, ' ');
     } while (strcmp(newUser->fName, "") == 0);
 
     //Asking last name
@@ -170,7 +170,7 @@ int new_user_form(User *newUser)
     {
         move(2 * height/5 + 2, width/4 + strlen("Last name      (max. 49 characters): "));
         getnstr(newUser->lName, 49);
-        remove_end_spaces(newUser->lName);
+        remove_end_char(newUser->lName, ' ');
     } while (strcmp(newUser->lName, "") == 0);
 
     //Asking mailing adress
@@ -178,7 +178,7 @@ int new_user_form(User *newUser)
     {
         move(2 * height/5 + 3, width/4 + strlen("Mailing adress (max. 99 characters): "));
         getnstr(newUser->mailingAdress, 99);
-        remove_end_spaces(newUser->mailingAdress);
+        remove_end_char(newUser->mailingAdress, ' ');
     } while (strcmp(newUser->mailingAdress, "") == 0);
 
     //Asking profession
@@ -186,7 +186,7 @@ int new_user_form(User *newUser)
     {
         move(2 * height/5 + 4, width/4 + strlen("Profession     (max. 99 characters): "));
         getnstr(newUser->profession, 99);
-        remove_end_spaces(newUser->profession);
+        remove_end_char(newUser->profession, ' ');
     } while (strcmp(newUser->profession, "") == 0);
 
 
