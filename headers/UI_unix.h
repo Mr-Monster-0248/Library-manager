@@ -32,6 +32,6 @@ void display_book_info(Book myBook);
 void disp(char* string);
 
 //display every informations for a specified user
-void display_user_info(User myUser)
+void display_user_info(User myUser);
 
 #endif
