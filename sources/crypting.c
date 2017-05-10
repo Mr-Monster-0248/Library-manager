@@ -17,11 +17,13 @@ int* encrypt_to_int(char* string)
 char* decrypt_to_string(int* encrypted, const int numberChars)
 {
     int i = 0;
-    char* string = (char*) malloc(numberChars * sizeof(char));
+    char* string = (char*) malloc((numberChars + 1) * sizeof(char));
     check_alloc(string);
 
     for (i = 0; i < numberChars; i++)
         string[i] = (char) (encrypted[i] - i - 1);
+
+    string[numberChars] = '\0';
 
     return string;
 }
