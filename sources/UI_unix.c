@@ -302,6 +302,6 @@ void display_book_info(Book myBook)
 {
     curs_set(0);
     move(1,1);
-    printw("%s by %s\n", myBook.title, myBook.author);
+    printw("\"%s\" by %s\n", myBook.title, myBook.author);
     printw("\tcode: %s, %d copie(s), with %d available(s)\n", myBook.code, myBook.copies, myBook.available);
 }

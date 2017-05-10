@@ -169,6 +169,6 @@ void clear_screen()
 
 void display_book_info(Book myBook)
 {
-    printf("%s by %s\n", myBook.title, myBook.author);
+    printf("\"%s\" by %s\n", myBook.title, myBook.author);
     printf("\tcode: %s, %d copie(s), with %d available(s)\n", myBook.code, myBook.copies, myBook.available);
 }
