@@ -7,7 +7,7 @@ This project's aim is to implement a little software (there may be a GUI) to man
   * Clients must be able to borrow books (for a certain amount of time) if they are availble
   * Employees must be able to have the complete inventory of available books
   * Employees must be able to see which clients did not returned their books in time
------
+-----------
 <h2>We had a few ideas to improve the software:</h2>
 * When launching the program, a login page will be displayed, with two options: login to your account or create a new account<br />
 * Depending on your groupID (if you work for the library or not), you will have access to clients or employees functionalities<br />
