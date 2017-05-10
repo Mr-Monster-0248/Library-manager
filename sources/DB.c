@@ -230,3 +230,18 @@ void copy_User(User* to, User from)
     for (i = 0; i < from.numberBBooks; i++)
     strcpy(to->borrowedBooks[i], from.borrowedBooks[i]);
 }
+
+
+Book load_next_book(FILE* books_db)
+{
+    Book myBook;
+
+    strcpy(myBook.title, read_line(books_db));
+    strcpy(myBook.author, read_line(books_db));
+    strcpy(myBook.code, read_line(books_db));
+    fscanf(books_db, "%d", &(myBook.copies));
+    fscanf(books_db, "%d", &(myBook.available));
+    fgetc(books_db); //To read the empty line
+
+    return myBook;
+}
