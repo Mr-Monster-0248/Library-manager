@@ -28,4 +28,7 @@ void clear_screen();
 //display every informations for a specified book
 void display_book_info(Book myBook);
 
+//display any string without having to choose unix or windows version
+void disp(char* string);
+
 #endif

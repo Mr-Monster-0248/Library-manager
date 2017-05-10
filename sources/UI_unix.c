@@ -305,3 +305,8 @@ void display_book_info(Book myBook)
     printw("\"%s\" by %s\n", myBook.title, myBook.author);
     printw("\tcode: %s, %d copie(s), with %d available(s)\n", myBook.code, myBook.copies, myBook.available);
 }
+
+void disp(char* string)
+{
+    printw("%s", string);
+}

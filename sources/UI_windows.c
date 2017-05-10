@@ -172,3 +172,8 @@ void display_book_info(Book myBook)
     printf("\"%s\" by %s\n", myBook.title, myBook.author);
     printf("\tcode: %s, %d copie(s), with %d available(s)\n", myBook.code, myBook.copies, myBook.available);
 }
+
+void disp(char* string)
+{
+    printf("%s", string);
+}

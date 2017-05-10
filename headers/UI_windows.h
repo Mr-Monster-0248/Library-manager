@@ -23,4 +23,6 @@ void clear_screen();
 
 void display_book_info(Book myBook);
 
+void disp(char* string);
+
 #endif
