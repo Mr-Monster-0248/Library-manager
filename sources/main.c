@@ -35,6 +35,8 @@ int main(int argc, char** argv)
           return EXIT_SUCCESS;
         break;
     }
+
+    clear();
   } while (1);
 
   return EXIT_SUCCESS;

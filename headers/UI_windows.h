@@ -19,4 +19,6 @@ void password_field(int yPos, int xPos, char* password);
 
 int new_user_form(User *newUser);
 
+void clear();
+
 #endif
