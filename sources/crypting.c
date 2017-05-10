@@ -3,25 +3,25 @@
 
 int* encrypt_to_int(char* string)
 {
-  int i = 0;
-  int* crypted = (int*) malloc(strlen(string) * sizeof(int));
-  check_alloc(crypted);
+    int i = 0;
+    int* crypted = (int*) malloc(strlen(string) * sizeof(int));
+    check_alloc(crypted);
 
-  for (i = 0; i < strlen(string); i++)
+    for (i = 0; i < strlen(string); i++)
     crypted[i] = string[i] + i + 1;
 
-  return crypted;
+    return crypted;
 }
 
 
 char* decrypt_to_string(int* encrypted, const int numberChars)
 {
-  int i = 0;
-  char* string = (char*) malloc(numberChars * sizeof(char));
-  check_alloc(string);
+    int i = 0;
+    char* string = (char*) malloc(numberChars * sizeof(char));
+    check_alloc(string);
 
-  for (i = 0; i < numberChars; i++)
+    for (i = 0; i < numberChars; i++)
     string[i] = (char) (encrypted[i] - i - 1);
 
-  return string;
+    return string;
 }
