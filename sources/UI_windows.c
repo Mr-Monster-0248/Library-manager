@@ -58,7 +58,7 @@ int login_menu()
 
     do {
         CLEAR_SCREEN();
-        printf("\n\n\n\t1. Login (existing account)\n\t2. Create new account\n\t3. Exit the program\n");
+        printf("\n\n\n\t1. Create new account\n\t2. Login (existing account)\n\t3. Exit the program\n\n\n");
         printf("Your choice (numeric value): ");
         if (scanf("%d", &choice) == 1)
         {
