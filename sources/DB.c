@@ -168,6 +168,9 @@ User load_next_user(FILE* user_db)
         */
     }
 
+    fgetc(user_db);
+    fgetc(user_db);
+
     //Storing read data in structure User
     strcpy(myUser.email, dEmail);
     strcpy(myUser.password, dPassword);
