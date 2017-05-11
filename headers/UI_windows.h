@@ -27,4 +27,6 @@ void disp(char* string);
 
 void display_user_info(User myUser);
 
+char* ask_string_info(const char* message);
+
 #endif

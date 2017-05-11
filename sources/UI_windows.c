@@ -184,3 +184,22 @@ void display_user_info(User myUser)
     printf("E-mail: %s\n", myUser.email);
     printf("Mailing adress: %s\"\n", myUser.mailingAdress);
 }
+
+char* ask_string_info(const char* message)
+{
+    char* info = (char*) malloc(50 * sizeof(char));
+
+    check_alloc(info);
+
+    while (1)
+    {
+        fflush(stdin);
+        printf(message);
+        fgets(info, 50, stdin);
+
+        if (strcmp(info, ""))
+            return info;
+
+        clear_screen();
+    }
+}

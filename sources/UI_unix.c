@@ -244,7 +244,7 @@ int login(User* currentUser)
 
     //Building interface
     clear();
-    mvprintw(height/5 - 7, (width - strlen("===== Login Page =====")) / 2, "===== Login Page =====");
+    mvprintw(height/5 - 7, (width - 22) / 2, "===== Login Page =====");
     mvprintw(height/5, width/5, "E-mail: ");
     mvprintw(height/5 + 5, width/5 - 2, "Password: ");
     refresh();
@@ -255,9 +255,9 @@ int login(User* currentUser)
 
     //Getting a valid e-mail adress
     do {
-        mvprintw(height/5, width/5 + strlen("E-mail: "), "                                                  ");
+        mvprintw(height/5, width/5 + 8, "                                                  ");
         refresh();
-        move(height/5, width/5 + strlen("E-mail: "));
+        move(height/5, width/5 + 8);
         getnstr(askedEmail, 50);
 
         //Verifying if the email adress is stored in the database
@@ -272,14 +272,20 @@ int login(User* currentUser)
 
     remainingAttempts = 3;
 
+    clear();
+    mvprintw(height/5 - 7, (width - 22) / 2, "===== Login Page =====");
+    mvprintw(height/5, width/5, "E-mail: %s", askedEmail);
+    mvprintw(height/5 + 5, width/5 - 2, "Password: ");
+    refresh();
+
 
     //Asking password
     while(userOK == 1 && remainingAttempts > 0)
     {
         noecho();
-        mvprintw(height/5 + 5, width/5 - 2 + strlen("Password: "), "                                                  ");
+        mvprintw(height/5 + 5, width/5 + 8, "                                                  ");
         refresh();
-        password_field(height/5 + 5, width/5 - 2 + strlen("Password: "), askedPassword); //Asking the password
+        password_field(height/5 + 5, width/5 + 8, askedPassword); //Asking the password
 
         if (!strcmp(askedPassword, myUser.password)) //If password found
         {
@@ -318,4 +324,26 @@ void display_user_info(User myUser)
     printw("%s %s - %s\n", myUser.fName, myUser.lName, myUser.profession);
     printw("E-mail: %s\n", myUser.email);
     printw("Mailing adress: %s\"\n", myUser.mailingAdress);
+}
+
+
+char* ask_string_info(const char* message)
+{
+    char* info = (char*) malloc(50 * sizeof(char));
+
+    check_alloc(info);
+
+    while (1)
+    {
+        printw(message);
+        refresh();
+        echo();
+        getnstr(info, 49);
+        noecho();
+
+        if (strcmp(info, ""))
+            return info;
+
+        clear_screen();
+    }
 }
