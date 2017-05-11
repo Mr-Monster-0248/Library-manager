@@ -272,6 +272,11 @@ int login(User* currentUser)
 
     remainingAttempts = 3;
 
+    FILE* logFile = fopen("log", "a");
+    check_alloc(logFile);
+    fprintf(logFile, "User loaded:\n\te-mail: \"%s\"\n\tpassword: \"%s\"\n", myUser.email, myUser.password);
+    //fclose(logFile);
+
     clear();
     mvprintw(height/5 - 7, (width - 22) / 2, "===== Login Page =====");
     mvprintw(height/5, width/5, "E-mail: %s", askedEmail);
@@ -287,14 +292,24 @@ int login(User* currentUser)
         refresh();
         password_field(height/5 + 5, width/5 + 8, askedPassword); //Asking the password
 
-        if (!strcmp(askedPassword, myUser.password)) //If password found
+        fprintf(logFile, "\ttyped: \"%s\", must be \"%s\"\n", askedPassword, myUser.password);
+
+        if (strcmp(askedPassword, myUser.password) == 0) //If password found
         {
             copy_User(currentUser, myUser);
+
+            fprintf(logFile, "Password match!\n\n");
+            fclose(logFile);
+
             return 1;
         }
 
         mvprintw(height/5 + 7, width/5, "Error: wrong password. %d attempts remaining", --remainingAttempts);
     }
+
+    fprintf(logFile, "Wrong password 3 times\n\n");
+    fclose(logFile);
+
     return 0;
 }
 
