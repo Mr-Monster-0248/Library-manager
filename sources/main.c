@@ -28,13 +28,13 @@ int main(int argc, char** argv)
 
                 if (myUser.groupID == 1)
                 {
-                    //admin_interface(myUser);
+                    admin_interface(myUser);
                     break;
                 }
 
                 do {
                     leave = 0;
-                    switch (client_interface(myUser))
+                    switch (client_interface(myUser)) //pour le moment change ici pour test admin_interface PS. elle marche très bien
                     {
                         case 0:
                             system("echo Borrow book >> test.b");

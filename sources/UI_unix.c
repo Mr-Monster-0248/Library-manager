@@ -416,7 +416,27 @@ int client_interface(User myUser)
 
     refresh();
 
-    return move_arrow(width / 5 - 1, height/5 + 6 + i, height/5 + 11 + i);
+    return move_arrow(width / 5 - 2, height/5 + 6 + i, height/5 + 11 + i);
+}
 
-    system("sleep 5");
+int admin_interface(User myUser)
+{
+    curs_set(0);
+    int height, width, i = 0;
+    Date currentDate = current_date();
+    getmaxyx(stdscr, height, width);
+
+    clear();
+    mvprintw(height / 5, (width - (strlen(myUser.fName) + strlen(myUser.lName)) - 13) / 2, "===== %s %s =====", myUser.fName, myUser.lName);
+    mvprintw(height / 5 + 1, (width - 10) / 2, "%2d/%2d/%4d", currentDate.month, currentDate.day, currentDate.year);
+    mvprintw(height / 5 + 6, width / 5, "Display books");
+    mvprintw(height / 5 + 7, width / 5, "Display Users");
+    mvprintw(height / 5 + 8, width / 5, "Add Admin");
+    mvprintw(height / 5 + 9, width / 5, "Modify password");
+    mvprintw(height / 5 + 10, width / 5, "Delete my account");
+    mvprintw(height / 5 + 11, width / 5, "Logout");
+
+    refresh();
+
+    return move_arrow(width / 5 - 2, height/5 + 6 + i, height/5 + 11 + i);
 }
