@@ -32,8 +32,9 @@ typedef struct User
     int numberBBooks;
 } User;
 
+
 //Function that stores a new user in the users database
-void store_new_user(User newUser);
+void store_user(User newUser);
 
 //Function that writes an array of integers in a specified file (must already be opened in write or append mode)
 void write_integers_array(FILE* file, int* array, const int numberElements);
