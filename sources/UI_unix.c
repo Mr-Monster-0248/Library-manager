@@ -117,7 +117,7 @@ void password_field(int yPos, int xPos, char* password)
 }
 
 
-int new_user_form(User *newUser)
+int new_user_form(User *newUser, const int isAdmin)
 {
     int height, width;
     char c;
@@ -226,7 +226,7 @@ int new_user_form(User *newUser)
     if (c == 'n' || c == 'N')
     return 0;
 
-    newUser->groupID = 0; //Set user mode to client
+    newUser->groupID = isAdmin; //Set user mode to client
     newUser->numberBBooks = 0; //No books borrowed
 
     return 1;

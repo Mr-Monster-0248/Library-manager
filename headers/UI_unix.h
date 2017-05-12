@@ -20,7 +20,7 @@ int move_arrow(const int xPos, const int minYCoord, const int maxYCoord);
 void password_field(int yPos, int xPos, char* password);
 
 //Function to display and fill a form for a new User
-int new_user_form(User *newUser);
+int new_user_form(User *newUser, const int isAdmin);
 
 //So that the curses.h clear() function is accessible from everywhere
 void clear_screen();

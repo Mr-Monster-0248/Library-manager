@@ -40,13 +40,6 @@ User: Tibo Lepez
 	profession:		Student
 	mailing adress:	42 Tiboland
 
-User: Noam is a Faggot 
-	groupID:		0
-	e-mail:			noam@faggot.fr
-	password:		analsex
-	profession:		Sex Slave
-	mailing adress:	2 Les Amelots 18260 Assigny
-
 User: Docteur Lumiere 
 	groupID:		0
 	e-mail:			ruben.nabet@gmail.com
@@ -67,18 +60,4 @@ User: Emile Gravier
 	password:		odile
 	profession:		Serial Killer (TIN!)
 	mailing adress:	Mustard and Cinema festival, Dijon France
-
-User: Jean Billy Bob 
-	groupID:		0
-	e-mail:			jean.billy@gmail.com
-	password:		billybob
-	profession:		2000
-	mailing adress:	8 rue Billy Bob
-
-User: Cam Briand 
-	groupID:		0
-	e-mail:			test@test.fr
-	password:		password1234
-	profession:		Student
-	mailing adress:	8 rue truc
 

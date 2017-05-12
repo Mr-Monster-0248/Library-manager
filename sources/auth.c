@@ -14,7 +14,7 @@ int check_password(char* toCheck, char* password)
 
 int ask_new_user_data(User *newUser)
 {
-    return new_user_form(newUser);
+    return new_user_form(newUser, 0);
 }
 
 

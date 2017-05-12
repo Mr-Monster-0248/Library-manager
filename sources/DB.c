@@ -549,3 +549,27 @@ void update_user(User myUser)
 
     rename(TEMP_DB_PATH, USERS_DB_PATH);
 }
+
+
+Book get_book_by_code(const char* bookCode)
+{
+    FILE* books_db = fopen(BOOKS_DB_PATH, "r");
+    Book currentBook;
+
+    check_alloc(books_db);
+
+    while (!feof(books_db))
+    {
+        currentBook = load_next_book(books_db);
+
+        if (!strcmp(bookCode, currentBook.code))
+        {
+            fclose(books_db);
+            return currentBook;
+        }
+    }
+
+    fclose(books_db);
+    strcpy(currentBook.code, "ERR-000"); //Setting book code to error code
+    return currentBook;
+}

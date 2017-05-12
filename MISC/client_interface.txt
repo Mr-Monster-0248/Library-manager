@@ -1,0 +1,25 @@
+Hello fName lName
+Date (current date)
+
+BBooks
+    book 1 (no overdue) ==> bookTitle
+    book 2 (overdue) ==> (color set to red) bookTitle, OVERDUE
+
+1. Borrow a book
+    ==> Type code
+2. Return a book
+    ==> Type code
+3. Search a book
+    3.1) By author
+    3.2) By title
+    3.3) By code
+4. Modify password
+    ==> enter current password
+    ==> enter new password
+5. Delete my account
+    ==> If no books borrowed
+        => Enter password
+        => "Are you sure ? (y/n)"
+    ==> Else
+        => "You cannot delete your account until you have returned all the books you borrowed"
+6. Logout

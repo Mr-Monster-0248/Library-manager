@@ -22,17 +22,27 @@ int main(int argc, char** argv)
         switch(login_menu())
         {
             case 0:
-            login(&myUser);
+                if(!login(&myUser))
+                    break;
+
+                if (myUser.groupID == 1)
+                {
+                    admin_interface(myUser);
+                    break;
+                }
+
+                client_interface(myUser);
             break;
 
             case 1:
-            while(!ask_new_user_data(&myUser));
-            store_user(myUser, USERS_DB_PATH);
+                while(!ask_new_user_data(&myUser));
+                store_user(myUser, USERS_DB_PATH);
+                //order database (alphabetical order)
             break;
 
             default:
-            UI_stop();
-            return EXIT_SUCCESS;
+                UI_stop();
+                return EXIT_SUCCESS;
             break;
         }
 

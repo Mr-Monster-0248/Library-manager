@@ -92,7 +92,7 @@ void password_field(int yPos, int xPos, char* password)
 }
 
 
-int new_user_form(User *newUser)
+int new_user_form(User *newUser, const int* isAdmin)
 {
     char c;
 
@@ -161,7 +161,7 @@ int new_user_form(User *newUser)
     if (c == 'n' || c == 'N')
     return 0;
 
-    newUser->groupID = 0;
+    newUser->groupID = isAdmin;
     newUser->numberBBooks = 0;
 
     return 1;

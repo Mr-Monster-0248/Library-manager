@@ -17,7 +17,7 @@ void UI_stop();
 
 void password_field(int yPos, int xPos, char* password);
 
-int new_user_form(User *newUser);
+int new_user_form(User *newUser, const int* isAdmin);
 
 void clear_screen();
 
