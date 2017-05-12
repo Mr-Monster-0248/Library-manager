@@ -6,44 +6,44 @@
 Date compare_dates(Date date1, Date date2)
 {
 	//Comparing the years
-	if (date1.y < date2.y)
+	if (date1.year < date2.year)
 		return date2;
-	else if (date1.y > date2.y)
+	else if (date1.year > date2.year)
 		return date1;
 
 	//If the years are equal, comparing the months
-	if (date1.m < date2.m)
+	if (date1.month < date2.month)
 		return date2;
-	else if (date1.m > date2.m)
+	else if (date1.month > date2.month)
 		return date1;
 
 	//If the months are equal, comparing the days
-	if (date1.d < date2.d)
+	if (date1.day < date2.day)
 		return date2;
 
 	//If date1 is the most recent or both dates are equal, returning date1
 	return date1;
 }
 
-//NEED TO ADD RECOGNITION OF THE CURRENT DATE
+//NEED TO ADD RECOGNITION OF THE CURRENTDATE
 
 
 Date closest_date(Date currentDate, Date date1, Date date2)
 {
 	//Comparing with the years
-	if (fabs(currentDate.y - date1.y) < fabs(currentDate.y - date2.y))
+	if (fabs(currentDate.year - date1.year) < fabs(currentDate.year - date2.year))
 		return date1;
-	else if (fabs(currentDate.y - date1.y) > fabs(currentDate.y - date2.y))
+	else if (fabs(currentDate.year - date1.year) > fabs(currentDate.year - date2.year))
 		return date2;
 
 	//Comparing with the months if the years are equal
-	if (fabs(currentDate.m - date1.m) < fabs(currentDate.m - date2.m))
+	if (fabs(currentDate.month - date1.month) < fabs(currentDate.month - date2.month))
 		return date1;
-	else if (fabs(currentDate.m - date1.m) > fabs(currentDate.m - date2.m))
+	else if (fabs(currentDate.month - date1.month) > fabs(currentDate.month - date2.month))
 		return date2;
 
 	//Comparing with the days if both years are equal
-	if (fabs(currentDate.d - date1.d) < fabs(currentDate.d - date2.d))
+	if (fabs(currentDate.day - date1.day) < fabs(currentDate.day - date2.day))
 		return date1;
 
 	return date2; //If both dates are the same or date2 is the closest to the current date
@@ -52,32 +52,32 @@ Date closest_date(Date currentDate, Date date1, Date date2)
 
 int check_date_validity(Date date)
 {
-	if (date.m > 0 && date.m <= 12)
+	if (date.month > 0 && date.month <= 12)
 	{
-		if (date.m <= 7)
+		if (date.month <= 7)
 		{
-			switch(date.m % 2)
+			switch(date.month % 2)
 			{
 				case 1:
-					if (date.d < 0 || date.d > 31)
+					if (date.day < 0 || date.day > 31)
 						return 0;
 					return 1;
 					break;
 
 				case 0:
-					if (date.m == 2)
+					if (date.month == 2)
 					{
-						if ((date.y % 4 == 0 && date.y % 100 != 0)  || date.y % 400 == 0) //If year is bisextile
+						if ((date.year % 4 == 0 && date.year % 100 != 0)  || date.year % 400 == 0) //If year is bisextile
 						{
 
-							if (date.d < 0 || date.d > 29)
+							if (date.day < 0 || date.day > 29)
 								return 0;
 
 							return 1;
 
 							break;
 						} else {
-							if (date.d < 0 || date.d > 28)
+							if (date.day < 0 || date.day > 28)
 								return 0;
 
 							return 1;
@@ -86,7 +86,7 @@ int check_date_validity(Date date)
 						}
 					}
 
-					if (date.d < 0 || date.d > 30)
+					if (date.day < 0 || date.day > 30)
 						return 0;
 					return 1;
 					break;
@@ -97,16 +97,16 @@ int check_date_validity(Date date)
 			}
 		}
 
-		switch(date.m % 2)
+		switch(date.month % 2)
 		{
 			case 1:
-				if (date.m < 0 || date.m > 30)
+				if (date.month < 0 || date.month > 30)
 					return 0;
 				return 1;
 				break;
 
 			case 0:
-				if (date.m < 0 || date.m > 31)
+				if (date.month < 0 || date.month > 31)
 					return 0;
 				return 1;
 				break;
@@ -125,15 +125,15 @@ Date ask_date(const char* message)
 {
 	Date date;
 
-	date.y = 1998;
-	date.m = -1;
-	date.d = -1;
+	date.year = 1998;
+	date.month = -1;
+	date.day = -1;
 
 	while(1)
 	{
 		fflush(stdin);
 		printf("%s", message);
-		scanf("%d/%d/%d", &(date.d), &(date.m), &(date.y));
+		scanf("%d/%d/%d", &(date.day), &(date.month), &(date.year));
 
 		if (check_date_validity(date))
 			break;
