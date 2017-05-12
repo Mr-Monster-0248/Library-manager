@@ -146,6 +146,7 @@ Date ask_date(const char* message)
 	return date;
 }
 
+
 Date current_date()
 {
 	Date currentDate

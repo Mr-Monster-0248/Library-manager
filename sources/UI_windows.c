@@ -52,6 +52,7 @@ int login(User* currentUser)
     return 0;
 }
 
+
 int login_menu()
 {
     int choice = 0;
@@ -70,15 +71,18 @@ int login_menu()
     } while(1);
 }
 
+
 void UI_init()
 {
     //This function has actually no interest for windows, but is needed for the program to compile
 }
 
+
 void UI_stop()
 {
     //This function has actually no interest for windows, but is needed for the program to compile
 }
+
 
 void password_field(int yPos, int xPos, char* password)
 {
@@ -86,6 +90,7 @@ void password_field(int yPos, int xPos, char* password)
     fflush(stdin);
     fgets(password, 49, stdin);
 }
+
 
 int new_user_form(User *newUser)
 {
@@ -187,12 +192,14 @@ void disp_int(const int integer)
     printf("%d", integer);
 }
 
+
 void display_user_info(User myUser)
 {
     printf("%s %s - %s\n", myUser.fName, myUser.lName, myUser.profession);
     printf("E-mail: %s\n", myUser.email);
     printf("Mailing adress: %s\"\n", myUser.mailingAdress);
 }
+
 
 char* ask_string_info(const char* message)
 {

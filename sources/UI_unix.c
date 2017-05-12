@@ -319,6 +319,7 @@ void clear_screen()
     clear();
 }
 
+
 void display_book_info(Book myBook)
 {
     curs_set(0);
@@ -327,15 +328,18 @@ void display_book_info(Book myBook)
     printw("\tcode: %s, %d copie(s), with %d available(s)\n", myBook.code, myBook.copies, myBook.available);
 }
 
+
 void disp(char* string)
 {
     printw("%s", string);
 }
 
+
 void disp_int(const int integer)
 {
     printw("%d", integer);
 }
+
 
 void display_user_info(User myUser)
 {
