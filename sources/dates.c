@@ -149,15 +149,15 @@ Date ask_date(const char* message)
 
 Date current_date()
 {
-	Date currentDate
+	Date currentDate;
 
 	time_t tmp;
-    struct tm currentDate;
+    struct tm timeDate;
 
     time(&tmp);
     timeDate = *gmtime(&tmp);
 
-	currentDate.day = timeDate.tm_day;
+	currentDate.day = timeDate.tm_mday;
 	currentDate.month = timeDate.tm_mon + 1;
 	currentDate.year = timeDate.tm_year + 1900;
 
