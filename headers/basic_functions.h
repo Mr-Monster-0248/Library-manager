@@ -111,6 +111,9 @@
 	//Function to remove any char at the end of a string (recursive function)
 	void remove_end_char(char* string, const char c);
 
+	//Function that returns the same char but uppercase
+	char char_upper(const char c);
+
 	/*###########################################################################
 	#													FUNCTIONS MACROS																	#
 	###########################################################################*/

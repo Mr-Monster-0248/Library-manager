@@ -318,3 +318,13 @@ void remove_end_char(char* string, const char c)
         remove_end_char(string, c);
     }
 }
+
+
+//Function that returns the same char but uppercase
+char char_upper(const char c)
+{
+    if (c >= 97 && c <= 122)
+        return c - 32;
+
+    return c;
+}

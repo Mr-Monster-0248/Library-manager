@@ -82,7 +82,9 @@ void display_all_users();
 int get_user_ID(User myUser);
 
 //Function to update a user's data in the users database
-
 void update_user(User myUser);
+
+//Function to alphabetically order the users database after a new user was created
+void order__users_db();
 
 #endif

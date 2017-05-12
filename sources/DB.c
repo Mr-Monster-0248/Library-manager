@@ -573,3 +573,86 @@ Book get_book_by_code(const char* bookCode)
     strcpy(currentBook.code, "ERR-000"); //Setting book code to error code
     return currentBook;
 }
+
+
+void order__users_db()
+{
+    FILE* users_db = fopen(USERS_DB_PATH, "r");
+    User current, myUser;
+    int i = 0, ok = 0, min_length = 0;
+
+    check_alloc(users_db);
+
+    //Getting the user
+    while (!feof(users_db))
+        myUser = load_next_user(users_db);
+
+    //Setting the cursor to the beginning of the db
+    rewind(users_db);
+
+    //Copying the DB in a new file while looking for the right position for the user
+    while (!feof(users_db))
+    {
+        current = load_next_user(users_db);
+
+        //If same last name
+        if (!strcmp(current.lName, myUser.lName))
+        {
+            //If also same first name
+            if (!strcmp(current.fName, myUser.fName))
+            {
+                ok = 1;
+                break;
+            }
+
+
+            if (strlen(current.fName) < strlen(myUser.fName))
+                min_length = strlen(current.fName);
+            else
+                min_length = strlen(myUser.fName);
+
+
+            for (i = 0; i < min_length && !ok; i++)
+                if (char_upper(current.fName[i]) > char_upper(myUser.fName[i]))
+                    ok = 1;
+
+            //If names are the same for the length of the shortest
+            if (i == min_length && !ok)
+                if (min_length == strlen(myUser.fName))
+                    ok = 1;
+        }
+
+        if (strlen(current.lName) <= strlen(myUser.lName))
+            min_length = strlen(current.lName);
+        else
+            min_length = strlen(myUser.lName);
+
+
+        for (i = 0; i < min_length; i++)
+            if (char_upper(current.lName[i]) > char_upper(myUser.lName[i]))
+                ok = 1;
+
+        //If names are the same for the length of the shortest
+        if (i == min_length && !ok)
+            if (min_length == strlen(myUser.fName))
+                ok = 1;
+
+
+        if (ok)
+        {
+            store_user(myUser, TEMP_DB_PATH);
+            store_user(current, TEMP_DB_PATH);
+            break;
+        }
+
+        store_user(current, TEMP_DB_PATH);
+    }
+
+    //Copying end of database
+    while (!feof(users_db))
+        store_user(load_next_user(users_db), TEMP_DB_PATH);
+
+    fclose(users_db);
+    remove(USERS_DB_PATH);
+    rename(TEMP_DB_PATH, USERS_DB_PATH);
+}
