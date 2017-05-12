@@ -31,6 +31,9 @@ void display_book_info(Book myBook);
 //display any string without having to choose unix or windows version
 void disp(char* string);
 
+//display any integer without having to choose unix or windows version
+void disp_int(const int integer);
+
 //display every informations for a specified user
 void display_user_info(User myUser);
 

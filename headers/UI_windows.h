@@ -25,6 +25,8 @@ void display_book_info(Book myBook);
 
 void disp(char* string);
 
+void disp_int(const int integer);
+
 void display_user_info(User myUser);
 
 char* ask_string_info(const char* message);
