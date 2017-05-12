@@ -21,3 +21,5 @@ Date ask_date(const char* message);
 
 //Give current date
 Date current_date();
+
+#endif
