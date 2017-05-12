@@ -22,3 +22,4 @@ Date (current date)
         ==> If unreturned books
             =>This client has unreturned books
         => "Are you sure you want to delete this account (y/n)"
+6. Logout
