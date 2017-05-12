@@ -36,7 +36,8 @@ int main(int argc, char** argv)
         fprintf(decoded_db, "User: %s %s ", myUser.fName, myUser.lName);
         if (myUser.groupID != 0)
             fprintf(decoded_db, "(Admin)");
-        fprintf(decoded_db, "\n\te-mail:\t\t\t%s\n", myUser.email);
+        fprintf(decoded_db, "\n\tgroupID:\t\t%d\n", myUser.groupID);
+        fprintf(decoded_db, "\te-mail:\t\t\t%s\n", myUser.email);
         fprintf(decoded_db, "\tpassword:\t\t%s\n", myUser.password);
         fprintf(decoded_db, "\tprofession:\t\t%s\n", myUser.profession);
         fprintf(decoded_db, "\tmailing adress:\t%s\n\n", myUser.mailingAdress);

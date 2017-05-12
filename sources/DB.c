@@ -152,7 +152,7 @@ User load_next_user(FILE* user_db)
 
     //password
     cryptedPassword = return_int_line(user_db, &numberChars);
-    dPassword = decrypt_to_string(cryptedPassword, numberChars);
+    dPassword = decrypt_to_string(cryptedPassword, numberChars - 1);
 
     //first name
     cryptedFName = return_int_line(user_db, &numberChars);

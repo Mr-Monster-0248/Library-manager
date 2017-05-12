@@ -1,206 +1,32 @@
 User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "���"
-	password: ""
-Wrong password 3 times
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "ae", must be "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aez", must be "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
-Password match!
-
-User loaded:
-	e-mail: "aze"
-	password: "aze"
-	typed: "aze", must be "aze"
+	e-mail: "camboy@test.fr"
+	password: "password1234"
+	typed: "password1234", must be "password1234"
 Password match!
 
 User loaded:
 	e-mail: "camille.briand@gmail.com"
 	password: "password1234"
 	typed: "password1234", must be "password1234"
-	typed: "", must be "password1234"
-	typed: "", must be "password1234"
+	typed: "password1234", must be "password1234"
+	typed: "password1234", must be "password1234"
 Wrong password 3 times
+
+User loaded:
+	e-mail: "aze"
+	password: "aze"
+	typed: "aze", must be "aze"
+Password match!
+
+User loaded:
+	e-mail: "camboy@test.fr"
+	password: "password1234"
+	typed: "password1234", must be "password1234"
+Password match!
+
+User loaded:
+	e-mail: "camille.briand@gmail.com"
+	password: "password1234"
+	typed: "password1234", must be "password1234"
+Password match!
+
