@@ -43,4 +43,7 @@ char* ask_string_info(const char* message);
 //Display the client interface
 int client_interface(User myUser);
 
+//Display the admin interface
+int admin_interface(User myUser);
+
 #endif
