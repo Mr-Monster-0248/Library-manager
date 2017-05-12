@@ -8,16 +8,8 @@ typedef struct Date
     int year;
 } Date;
 
-//return the most recent date
-Date compare_dates(Date date1, Date date2);
-
-//retrun the closest date from tooday
-Date closest_date(Date currentDate, Date date1, Date date2);
-
-//chach if a date exist return 0 if not
-int check_date_validity(Date date);
-
-Date ask_date(const char* message);
+//return the most recent date(exemple 1900 and 2000 return 2)
+int compare_dates(Date date1, Date date2);
 
 //Give current date
 Date current_date();

@@ -27,7 +27,7 @@ int main(int argc, char** argv)
 
                 if (myUser.groupID == 1)
                 {
-                    admin_interface(myUser);
+                    //admin_interface(myUser);
                     break;
                 }
 

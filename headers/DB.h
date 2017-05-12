@@ -81,6 +81,8 @@ void display_all_users();
 //Function to get a users' space (user ID) in users database, returns -1 if user not found
 int get_user_ID(User myUser);
 
+Book get_book_by_code(const char* bookCode);
+
 //Function to update a user's data in the users database
 void update_user(User myUser);
 

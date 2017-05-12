@@ -28,3 +28,9 @@ User loaded:
 	typed: "", must be "password1234"
 Wrong password 3 times
 
+User loaded:
+	e-mail: "tibo@test.fr"
+	password: "azertyuiop!"
+	typed: "azertyuiop!", must be "azertyuiop!"
+Password match!
+

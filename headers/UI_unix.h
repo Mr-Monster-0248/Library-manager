@@ -40,4 +40,7 @@ void display_user_info(User myUser);
 //Function that displays a message and waits for the user to type a string which is the return value of the function
 char* ask_string_info(const char* message);
 
+//Display the client interface
+void client_interface(User myUser);
+
 #endif
