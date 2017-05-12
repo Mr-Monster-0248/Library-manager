@@ -5,11 +5,12 @@
 #include "../headers/UI_unix.h"
 #endif
 
-void store_user(User newUser)
+
+void store_user(User newUser, const char* db_path)
 {
     int i = 0;
     int *cryptedEmail = NULL, *cryptedPassword = NULL, *cryptedFName = NULL, *cryptedLName = NULL, *cryptedProfession = NULL, *cryptedMAdress = NULL, *cryptedCode = NULL;
-    FILE* users_db = fopen(USERS_DB_PATH, "a");
+    FILE* users_db = fopen(db_path, "a");
 
     check_alloc(users_db); //Checking file opening
 
@@ -175,9 +176,9 @@ User load_next_user(FILE* user_db)
     for (i = 0; i < numberBooks; i++)
     {
         //Obtaining the crypted book code and decrypting it
-        cryptedCode = return_int_line(users_db, &numberChars);
+        cryptedCode = return_int_line(user_db, &numberChars);
         dCode = decrypt_to_string(cryptedCode, numberChars);
-        fscanf(users_db, "%d %d %d %*d", &day, &month, &day);
+        fscanf(user_db, "%d %d %d %*d", &day, &month, &year);
 
         strcpy(myUser.borrowedBooks[i], dCode);
 
@@ -436,4 +437,115 @@ void search_user_by_email()
 
     fclose(users_db);
     free(eMail);
+}
+
+
+void display_all_users()
+{
+    FILE* users_db = fopen(USERS_DB_PATH, "r");
+    User myUser;
+    int i = 0;
+
+    while (!feof(users_db))
+    {
+        myUser = load_next_user(users_db);
+
+        if (myUser.groupID != 2)
+        {
+            disp(myUser.fName);
+            disp(" ");
+            disp(myUser.lName);
+            disp(" - ");
+            disp(myUser.profession);
+            if (myUser.groupID == 1) //If admin
+                disp(" (Admin)");
+            disp("\n\t");
+            disp(myUser.email);
+            disp("\n\t");
+            disp(myUser.mailingAdress);
+
+            for (i = 0; i < myUser.numberBBooks; i++)
+            {
+                disp("\n\tBorrowed: ");
+                disp(myUser.borrowedBooks[i]);
+                disp(" - Return date: ");
+                disp_int(myUser.returnDates[i].month);
+                disp("/");
+                disp_int(myUser.returnDates[i].day);
+                disp("/");
+                disp_int(myUser.returnDates[i].year);
+            }
+
+            disp("\n\n");
+        }
+    }
+
+    fclose(users_db);
+}
+
+
+int get_user_ID(User myUser)
+{
+    FILE* users_db = fopen(USERS_DB_PATH, "r");
+    User currentUser;
+    int i = 0;
+
+    do {
+        currentUser = load_next_user(users_db);
+
+        if (!strcmp(myUser.email, currentUser.email))
+        {
+            fclose(users_db);
+            return i;
+        }
+
+        i++;
+    } while(!feof(users_db));
+
+    fclose(users_db);
+    return -1;
+}
+
+
+void update_user(User myUser)
+{
+    FILE *users_db = fopen(USERS_DB_PATH, "r");
+    User loadedUser;
+    int i = 0, userID = get_user_ID(myUser);
+
+    check_alloc(users_db);
+
+    if (userID == -1) //If user not found in database
+    {
+        fclose(users_db);
+        return;
+    }
+
+    //Copying database until user
+    for (i = 0; i < userID; i++)
+    {
+        loadedUser = load_next_user(users_db);
+
+        store_user(loadedUser, TEMP_DB_PATH);
+    }
+
+    //Copying updated user
+    store_user(myUser, TEMP_DB_PATH);
+
+    //Skip user in database (previous database)
+    load_next_user(users_db);
+
+    //Copying end of database
+    while (!feof(users_db))
+    {
+        loadedUser = load_next_user(users_db);
+
+        store_user(loadedUser, TEMP_DB_PATH);
+    }
+
+    fclose(users_db);
+
+    remove(USERS_DB_PATH);
+
+    rename(TEMP_DB_PATH, USERS_DB_PATH);
 }

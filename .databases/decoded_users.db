@@ -75,3 +75,10 @@ User: Jean Billy Bob
 	profession:		2000
 	mailing adress:	8 rue Billy Bob
 
+User: Cam Briand 
+	groupID:		0
+	e-mail:			test@test.fr
+	password:		password1234
+	profession:		Student
+	mailing adress:	8 rue truc
+

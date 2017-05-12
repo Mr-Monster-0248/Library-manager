@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "../headers/dates.h"
 
 
 Date compare_dates(Date date1, Date date2)

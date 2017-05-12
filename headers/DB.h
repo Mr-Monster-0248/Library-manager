@@ -4,11 +4,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "dates.h"
 #include "basic_functions.h"
 #include "crypting.h"
 
 #define USERS_DB_PATH ".databases/users.db"
 #define BOOKS_DB_PATH ".databases/books.db"
+#define TEMP_DB_PATH ".databases/temp.db"
 
 typedef struct Book
 {
@@ -28,13 +30,14 @@ typedef struct User
     char password[50];
     char profession[100];
     char borrowedBooks[3][8];
+    Date returnDates[3];
     int groupID;
     int numberBBooks;
 } User;
 
 
 //Function that stores a new user in the users database
-void store_user(User newUser);
+void store_user(User newUser, const char* db_path);
 
 //Function that writes an array of integers in a specified file (must already be opened in write or append mode)
 void write_integers_array(FILE* file, int* array, const int numberElements);
@@ -72,5 +75,13 @@ void display_book_by_code();
 void search_user_by_name();
 
 void search_user_by_email();
+
+void display_all_users();
+
+//Function to get a users' space (user ID) in users database, returns -1 if user not found
+int get_user_ID(User myUser);
+
+//Function to update a user's data in the users database
+void update_user(User myUser);
 
 #endif

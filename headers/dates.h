@@ -1,5 +1,5 @@
-#ifndef DATE
-#define DATE
+#ifndef DEF_DATE
+#define DEF_DATE
 
 typedef struct Date
 {
@@ -18,3 +18,5 @@ Date closest_date(Date currentDate, Date date1, Date date2);
 int check_date_validity(Date date);
 
 Date ask_date(const char* message);
+
+#endif
