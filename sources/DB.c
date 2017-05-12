@@ -5,10 +5,10 @@
 #include "../headers/UI_unix.h"
 #endif
 
-void store_new_user(User newUser)
+void store_user(User newUser)
 {
     int i = 0;
-    int *cryptedEmail = NULL, *cryptedPassword = NULL, *cryptedFName = NULL, *cryptedLName = NULL, *cryptedProfession = NULL, *cryptedMAdress = NULL;
+    int *cryptedEmail = NULL, *cryptedPassword = NULL, *cryptedFName = NULL, *cryptedLName = NULL, *cryptedProfession = NULL, *cryptedMAdress = NULL, *cryptedCode = NULL;
     FILE* users_db = fopen(USERS_DB_PATH, "a");
 
     check_alloc(users_db); //Checking file opening
@@ -35,14 +35,22 @@ void store_new_user(User newUser)
     write_integers_array(users_db, cryptedLName, strlen(newUser.lName));
     write_integers_array(users_db, cryptedProfession, strlen(newUser.profession));
     write_integers_array(users_db, cryptedMAdress, strlen(newUser.mailingAdress));
+
     fprintf(users_db, "%d", newUser.numberBBooks);
 
+    //Writing books codes
     for (i = 0; i < newUser.numberBBooks; i++)
     {
+        cryptedCode = encrypt_to_int(newUser.borrowedBooks[i]);
+        write_integers_array(users_db, cryptedCode, strlen(newUser.borrowedBooks[i]));
+        free(cryptedCode);
+
         /*
-        TODO: crypting of books code and return dates
+            TODO: encrypt & write return dates of borrowed books
         */
     }
+
+    fprintf(users_db, "\n");
 
     //Freeing arrays
     free(cryptedEmail);
@@ -119,9 +127,12 @@ void copy_to_line(char* path_toCopy, char* path_newFile, const int stopLine)
 User load_next_user(FILE* user_db)
 {
     User myUser;
-    int *cryptedEmail = NULL, *cryptedPassword = NULL, *cryptedFName = NULL, *cryptedLName = NULL, *cryptedProfession = NULL, *cryptedMAdress = NULL;
-    char *dEmail = NULL, *dPassword = NULL, *dFName = NULL, *dLName = NULL, *dProfession = NULL, *dMAdress = NULL;
+    int *cryptedEmail = NULL, *cryptedPassword = NULL, *cryptedFName = NULL, *cryptedLName = NULL, *cryptedProfession = NULL, *cryptedMAdress = NULL, *cryptedCode = NULL;
+    char *dEmail = NULL, *dPassword = NULL, *dFName = NULL, *dLName = NULL, *dProfession = NULL, *dMAdress = NULL, *dCode = NULL;
     int numberBooks = 0, i = 0, numberChars = 0;
+
+    //TEMPORARY (waiting for struct Date)
+    int day = 0, month = 0, year = 0;
 
     check_alloc(user_db);
 
@@ -163,10 +174,19 @@ User load_next_user(FILE* user_db)
 
     for (i = 0; i < numberBooks; i++)
     {
-        /*
-        TODO: store books data
-        */
+        //Obtaining the crypted book code and decrypting it
+        cryptedCode = return_int_line(users_db, &numberChars);
+        dCode = decrypt_to_string(cryptedCode, numberChars);
+        fscanf(users_db, "%d %d %d %*d", &day, &month, &day);
+
+        strcpy(myUser.borrowedBooks[i], dCode);
+
+        free(cryptedCode);
+        free(dCode);
     }
+
+    fgetc(user_db);
+    fgetc(user_db);
 
     //Storing read data in structure User
     strcpy(myUser.email, dEmail);
