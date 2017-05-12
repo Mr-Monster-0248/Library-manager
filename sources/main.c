@@ -13,6 +13,7 @@
 
 int main(int argc, char** argv)
 {
+    int leave = 0;
     User myUser;
 
     UI_init();
@@ -25,13 +26,40 @@ int main(int argc, char** argv)
                 if(!login(&myUser))
                     break;
 
-                //if (myUser.groupID == 1)
+                if (myUser.groupID == 1)
                 {
                     //admin_interface(myUser);
                     break;
                 }
 
-                client_interface(myUser);
+                do {
+                    leave = 0;
+                    switch (client_interface(myUser))
+                    {
+                        case 0:
+                            system("echo Borrow book >> test.b");
+                        break;
+                        case 1:
+                            system("echo return book >> test.b");
+                        break;
+                        case 2:
+                            system("echo search a book >> test.b");
+                        break;
+                        case 3:
+                            system("echo Modify password >> test.b");
+                        break;
+                        case 4:
+                            system("echo delete account >> test.b");
+                        break;
+                        case 5:
+                            leave = 1;
+                        break;
+
+                        default:
+                            leave = 1;
+                        break;
+                    }
+                } while(leave == 0);
             break;
 
             case 1:

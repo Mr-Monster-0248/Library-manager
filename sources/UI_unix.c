@@ -375,17 +375,17 @@ char* ask_string_info(const char* message)
 }
 
 
-void client_interface(User myUser)
+int client_interface(User myUser)
 {
+    curs_set(0);
     int height, width, i = 0;
     Book borrowedBooks;
     Date currentDate = current_date();
     getmaxyx(stdscr, height, width);
 
     clear();
-    mvprintw(height / 5, (width - 26) / 2, "===== Your Interface =====");
-    mvprintw(height / 5 + 1, (width -26) / 2, "Hi %s", myUser.fName);
-    mvprintw(height / 5 + 2, (width -26) / 2, "%d/%d/%d", currentDate.month, currentDate.day, currentDate.year);
+    mvprintw(height / 5, (width - (strlen(myUser.fName) + strlen(myUser.lName)) - 13) / 2, "===== %s %s =====", myUser.fName, myUser.lName);
+    mvprintw(height / 5 + 1, (width - 10) / 2, "%2d/%2d/%4d", currentDate.month, currentDate.day, currentDate.year);
     if(myUser.numberBBooks == 0)
     {
         mvprintw(height / 5 + 4, (width - 40) / 2, "You have no borroed books");
@@ -399,20 +399,24 @@ void client_interface(User myUser)
             if(compare_dates(myUser.returnDates[i], currentDate) == 2)
             {
                 //add red color
-                mvprintw(height / 5 + 4 + i, (width -40) / 2, "%s by %s (%s)", borrowedBooks.title, borrowedBooks.author, borrowedBooks.code);
+                mvprintw(height / 5 + 4 + i, width / 5, "%s by %s (%s)", borrowedBooks.title, borrowedBooks.author, borrowedBooks.code);
             }
             else
             {
-                mvprintw(height / 5 + 4 + i, (width -40) / 2, "%s by %s (%s)", borrowedBooks.title, borrowedBooks.author, borrowedBooks.code);
+                mvprintw(height / 5 + 4 + i, width / 5, "%s by %s (%s)", borrowedBooks.title, borrowedBooks.author, borrowedBooks.code);
             }
         }
     }
-    mvprintw(height / 5 + 6 + i, (width -40) / 2, "Borrow a book");
-    mvprintw(height / 5 + 7 + i, (width -40) / 2, "Return a book");
-    mvprintw(height / 5 + 8 + i, (width -26) / 2, "Search a book");
-    mvprintw(height / 5 + 9 + i, (width -26) / 2, "Modify password");
-    mvprintw(height / 5 + 10 + i, (width -26) / 2, "Delete my account");
-    mvprintw(height / 5 + 11 + i, (width -26) / 2, "Logout");
+    mvprintw(height / 5 + 6 + i, width / 5, "Borrow a book");
+    mvprintw(height / 5 + 7 + i, width / 5, "Return a book");
+    mvprintw(height / 5 + 8 + i, width / 5, "Search a book");
+    mvprintw(height / 5 + 9 + i, width / 5, "Modify password");
+    mvprintw(height / 5 + 10 + i, width / 5, "Delete my account");
+    mvprintw(height / 5 + 11 + i, width / 5, "Logout");
 
     refresh();
+
+    return move_arrow(width / 5 - 1, height/5 + 6 + i, height/5 + 11 + i);
+
+    system("sleep 5");
 }

@@ -41,6 +41,6 @@ void display_user_info(User myUser);
 char* ask_string_info(const char* message);
 
 //Display the client interface
-void client_interface(User myUser);
+int client_interface(User myUser);
 
 #endif
