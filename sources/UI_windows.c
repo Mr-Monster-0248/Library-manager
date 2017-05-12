@@ -162,10 +162,12 @@ int new_user_form(User *newUser)
     return 1;
 }
 
+
 void clear_screen()
 {
     CLEAR_SCREEN();
 }
+
 
 void display_book_info(Book myBook)
 {
@@ -173,9 +175,16 @@ void display_book_info(Book myBook)
     printf("\tcode: %s, %d copie(s), with %d available(s)\n", myBook.code, myBook.copies, myBook.available);
 }
 
+
 void disp(char* string)
 {
     printf("%s", string);
+}
+
+
+void disp_int(const int integer)
+{
+    printf("%d", integer);
 }
 
 void display_user_info(User myUser)

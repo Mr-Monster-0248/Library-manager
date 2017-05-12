@@ -19,4 +19,5 @@ int check_date_validity(Date date);
 
 Date ask_date(const char* message);
 
-#endif
+//Give current date
+Date current_date();

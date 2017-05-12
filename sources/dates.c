@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "../headers/dates.h"
+#include <time.h>
 
 
 Date compare_dates(Date date1, Date date2)
@@ -143,4 +144,21 @@ Date ask_date(const char* message)
 	}
 
 	return date;
+}
+
+Date current_date()
+{
+	Date currentDate
+
+	time_t tmp;
+    struct tm currentDate;
+
+    time(&tmp);
+    timeDate = *gmtime(&tmp);
+
+	currentDate.day = timeDate.tm_day;
+	currentDate.month = timeDate.tm_mon + 1;
+	currentDate.year = timeDate.tm_year + 1900;
+
+    return currentDate;
 }
