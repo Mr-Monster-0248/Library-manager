@@ -25,7 +25,7 @@ int main(int argc, char** argv)
                 if(!login(&myUser))
                     break;
 
-                if (myUser.groupID == 1)
+                //if (myUser.groupID == 1)
                 {
                     //admin_interface(myUser);
                     break;

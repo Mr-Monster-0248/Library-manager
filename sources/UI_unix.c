@@ -414,4 +414,5 @@ void client_interface(User myUser)
     mvprintw(height / 5 + 10 + i, (width -26) / 2, "Delete my account");
     mvprintw(height / 5 + 11 + i, (width -26) / 2, "Logout");
 
+    refresh();
 }

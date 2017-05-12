@@ -34,3 +34,39 @@ User loaded:
 	typed: "azertyuiop!", must be "azertyuiop!"
 Password match!
 
+User loaded:
+	e-mail: "tibo@test.fr"
+	password: "azertyuiop!"
+	typed: "azertyuiop!", must be "azertyuiop!"
+Password match!
+
+User loaded:
+	e-mail: "tibo@test.fr"
+	password: "azertyuiop!"
+	typed: "azertyuiop!", must be "azertyuiop!"
+Password match!
+
+User loaded:
+	e-mail: "camboy@test.fr"
+	password: "password1234"
+	typed: "password1234", must be "password1234"
+Password match!
+
+User loaded:
+	e-mail: "camboy@test.fr"
+	password: "password1234"
+	typed: "password1234", must be "password1234"
+Password match!
+
+User loaded:
+	e-mail: "camboy@test.fr"
+	password: "password1234"
+	typed: "password1234", must be "password1234"
+Password match!
+
+User loaded:
+	e-mail: "camboy@test.fr"
+	password: "password1234"
+	typed: "password1234", must be "password1234"
+Password match!
+
