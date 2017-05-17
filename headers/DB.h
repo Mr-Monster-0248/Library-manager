@@ -89,4 +89,7 @@ void update_user(User myUser);
 //Function to alphabetically order the users database after a new user was created
 void order__users_db();
 
+//Function to decode the users database and print the result in the file which path is given as parameter
+void decode_users_db(const char* filePath);
+
 #endif

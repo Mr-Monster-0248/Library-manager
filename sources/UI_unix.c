@@ -141,7 +141,7 @@ int new_user_form(User *newUser, const int isAdmin)
 
     //Displaying the form
     mvprintw(height/5, width/2 - (strlen("====== New User =====")/2), "====== New User =====");
-    mvprintw(2 * height/5, width/4, "Email adress    (max.69 characters): ");
+    mvprintw(2 * height/5, width/4, "Email adress   (max. 69 characters): ");
     mvprintw(2 * height/5 + 1, width/4, "First name     (max. 49 characters): ");
     mvprintw(2 * height/5 + 2, width/4, "Last name      (max. 49 characters): ");
     mvprintw(2 * height/5 + 3, width/4, "Mailing adress (max. 99 characters): ");

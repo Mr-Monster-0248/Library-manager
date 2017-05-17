@@ -579,7 +579,7 @@ void order__users_db()
 {
     FILE* users_db = fopen(USERS_DB_PATH, "r");
     User current, myUser;
-    int i = 0, ok = 0, min_length = 0;
+    int /*i = 0,*/ ok = 0/*, min_length = 0*/;
 
     check_alloc(users_db);
 
@@ -593,9 +593,10 @@ void order__users_db()
     //Copying the DB in a new file while looking for the right position for the user
     while (!feof(users_db))
     {
+        ok = 0;
         current = load_next_user(users_db);
 
-        //If same last name
+        /*//If same last name
         if (!strcmp(current.lName, myUser.lName))
         {
             //If also same first name
@@ -637,6 +638,20 @@ void order__users_db()
             if (min_length == strlen(myUser.fName))
                 ok = 1;
 
+        */
+
+        //If both last names are the same
+        if (!strcmp(current.lName, myUser.lName))
+        {
+            if (strcmp(current.fName, myUser.fName) >= 0)
+                ok = 1;
+        } else //If names are different
+        {
+            if (strcmp(current.lName, myUser.lName) > 0)
+                ok = 1;
+        }
+
+
 
         if (ok)
         {
@@ -650,9 +665,44 @@ void order__users_db()
 
     //Copying end of database
     while (!feof(users_db))
-        store_user(load_next_user(users_db), TEMP_DB_PATH);
+    {
+        current = load_next_user(users_db);
+
+        if (strcmp(current.email, myUser.email))
+            store_user(current, TEMP_DB_PATH);
+    }
 
     fclose(users_db);
     remove(USERS_DB_PATH);
     rename(TEMP_DB_PATH, USERS_DB_PATH);
+}
+
+
+void decode_users_db(const char* filePath)
+{
+    User myUser;
+    FILE *users_db = fopen(USERS_DB_PATH, "r");
+    FILE *decoded_db = fopen(filePath, "w");
+
+    check_alloc(users_db);
+    check_alloc(decoded_db);
+
+    while (!feof(users_db))
+    {
+        myUser = load_next_user(users_db);
+
+        fprintf(decoded_db, "User: %s %s ", myUser.fName, myUser.lName);
+        if (myUser.groupID != 0)
+            fprintf(decoded_db, "(Admin)");
+        fprintf(decoded_db, "\n\tgroupID:\t\t%d\n", myUser.groupID);
+        fprintf(decoded_db, "\te-mail:\t\t\t%s\n", myUser.email);
+        fprintf(decoded_db, "\tpassword:\t\t%s\n", myUser.password);
+        fprintf(decoded_db, "\tprofession:\t\t%s\n", myUser.profession);
+        fprintf(decoded_db, "\tmailing adress:\t%s\n\n", myUser.mailingAdress);
+    }
+
+    fclose(users_db);
+    fclose(decoded_db);
+
+    printf("Dabase successfully decoded!\n\n");
 }
