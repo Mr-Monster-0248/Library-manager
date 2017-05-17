@@ -33,7 +33,32 @@ int main(int argc, char** argv)
 
                 if (myUser.groupID == 1)
                 {
-                    admin_interface(myUser);
+                    do {
+                        leave = 0;
+                        switch (admin_interface(myUser)) {
+                            case 0:
+                            admin_display_book();
+                            break;
+                            case 1:
+                            system("echo display user admin >> test.b");
+                            break;
+                            case 2:
+                            system("echo add admin >> test.b");
+                            break;
+                            case 3:
+                            system("echo Modify password admin >> test.b");
+                            break;
+                            case 4:
+                            system("echo delete account admin >> test.b");
+                            break;
+                            case 5:
+                            leave = 1;
+                            break;
+                            default:
+                            leave = 1;
+                            break;
+                        }
+                    } while(leave == 0);
                     break;
                 }
 
