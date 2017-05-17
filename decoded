@@ -1,0 +1,28 @@
+User: DEFAULT ADMIN (Admin)
+	groupID:		1
+	e-mail:			admin
+	password:		admin
+	profession:		Default Admin
+	mailing adress:	none
+
+User: CAMILLE BRIAND (Admin)
+	groupID:		1
+	e-mail:			camille.briand@gmail.com
+	password:		password1234
+	profession:		Student
+	mailing adress:	8 rue Jean Mace, 75011 Paris
+
+User: Kais KLAI (Admin)
+	groupID:		1
+	e-mail:			kais.klai@lipn.univ-paris13.fr
+	password:		password1234
+	profession:		Professor
+	mailing adress:	LIPN Univ Diderot - Universite Paris 13
+
+User: THIBAULT LEPEZ (Admin)
+	groupID:		1
+	e-mail:			thibault.lepez@gmail.com
+	password:		azertyuiop
+	profession:		Student
+	mailing adress:	30 rue d'Inkermann, 59000 Lille
+

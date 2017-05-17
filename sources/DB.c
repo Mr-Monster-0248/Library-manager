@@ -579,15 +579,13 @@ void order__users_db()
 {
     FILE* users_db = fopen(USERS_DB_PATH, "r");
     User current, myUser;
-    int /*i = 0,*/ ok = 0/*, min_length = 0*/;
+    int ok = 0;
 
     check_alloc(users_db);
 
     //Getting the user
     while (!feof(users_db))
         myUser = load_next_user(users_db);
-
-    fprintf(logFile, "User to order: %s %s\n", myUser.fName, myUser.lName);
 
     //Setting the cursor to the beginning of the db
     rewind(users_db);
@@ -597,8 +595,6 @@ void order__users_db()
     {
         ok = 0;
         current = load_next_user(users_db);
-
-        fprintf(logFile, "\tLoaded user: %s %s\n", current.fName, current.lName);
 
 
         /*//If same last name
