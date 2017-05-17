@@ -1,0 +1,6 @@
+User to order: Thibault Lepez
+	Loaded user: default admin
+		Different names
+strcmp(Lepez, admin) = -21
+		User Thibault Lepez must be placed before user default admin
+User has been placed
