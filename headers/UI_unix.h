@@ -46,4 +46,7 @@ int client_interface(User myUser);
 //Display the admin interface
 int admin_interface(User myUser);
 
+//Admin interface for book display
+int admin_display_book();
+
 #endif

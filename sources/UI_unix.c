@@ -440,3 +440,20 @@ int admin_interface(User myUser)
 
     return move_arrow(width / 5 - 2, height/5 + 6 + i, height/5 + 11 + i);
 }
+
+int admin_display_book()
+{
+    curs_set(0);
+    int height, width, i = 0;
+    Date currentDate = current_date();
+    getmaxyx(stdscr, height, width);
+
+    clear();
+    mvprintw(height / 5, width / 5, "Display all DB");
+    mvprintw(height / 5 + 1, width / 5, "Display by genre (genre code)");
+    mvprintw(height / 5 + 2, width / 5, "Display by autor");
+    mvprintw(height / 5 + 3, width / 5, "Display by genre");
+
+    refresh();
+    return move_arrow(width / 5 - 2, height/5, height/5 + 3);
+}
