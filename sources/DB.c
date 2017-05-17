@@ -578,6 +578,7 @@ Book get_book_by_code(const char* bookCode)
 void order__users_db()
 {
     FILE* users_db = fopen(USERS_DB_PATH, "r");
+    FILE* logFile = fopen("orderLog", "w");
     User current, myUser;
     int /*i = 0,*/ ok = 0/*, min_length = 0*/;
 
@@ -587,6 +588,8 @@ void order__users_db()
     while (!feof(users_db))
         myUser = load_next_user(users_db);
 
+    fprintf(logFile, "User to order: %s %s\n", myUser.fName, myUser.lName);
+
     //Setting the cursor to the beginning of the db
     rewind(users_db);
 
@@ -595,6 +598,9 @@ void order__users_db()
     {
         ok = 0;
         current = load_next_user(users_db);
+
+        fprintf(logFile, "\tLoaded user: %s %s\n", current.fName, current.lName);
+
 
         /*//If same last name
         if (!strcmp(current.lName, myUser.lName))
@@ -643,18 +649,28 @@ void order__users_db()
         //If both last names are the same
         if (!strcmp(current.lName, myUser.lName))
         {
-            if (strcmp(current.fName, myUser.fName) >= 0)
+            fprintf(logFile, "\t\tSame last names, comparing first names\n");
+            if (strcmp(myUser.fName, current.fName) <= 0)
+            {
+                fprintf(logFile, "\t\tUser %s %s must be placed before user %s %s\n", myUser.fName, myUser.lName, current.fName, current.lName);
                 ok = 1;
+            }
         } else //If names are different
         {
-            if (strcmp(current.lName, myUser.lName) > 0)
+            fprintf(logFile, "\t\tDifferent names\n");
+            if (strcmp(myUser.lName, current.lName) < 0)
+            {
+                fprintf(logFile, "strcmp(%s, %s) = %d\n", myUser.lName, current.lName, strcmp(myUser.lName, current.lName));
+                fprintf(logFile, "\t\tUser %s %s must be placed before user %s %s\n", myUser.fName, myUser.lName, current.fName, current.lName);
                 ok = 1;
+            }
         }
 
 
 
         if (ok)
         {
+            fprintf(logFile, "User has been placed\n");
             store_user(myUser, TEMP_DB_PATH);
             store_user(current, TEMP_DB_PATH);
             break;
@@ -662,6 +678,8 @@ void order__users_db()
 
         store_user(current, TEMP_DB_PATH);
     }
+
+    fclose(logFile);
 
     //Copying end of database
     while (!feof(users_db))
@@ -704,5 +722,5 @@ void decode_users_db(const char* filePath)
     fclose(users_db);
     fclose(decoded_db);
 
-    printf("Dabase successfully decoded!\n\n");
+    printf("Dabase successfully decoded!\n");
 }
