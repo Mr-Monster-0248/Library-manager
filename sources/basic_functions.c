@@ -328,3 +328,14 @@ char char_upper(const char c)
 
     return c;
 }
+
+//Function that returns the same string but uppercase
+char* string_upper(char* string)
+{
+	int i = 0;
+
+	for (i = 0; i < strlen(string); i++)
+		string[i] = char_upper(string[i]);
+
+	return string;
+}

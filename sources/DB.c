@@ -578,7 +578,6 @@ Book get_book_by_code(const char* bookCode)
 void order__users_db()
 {
     FILE* users_db = fopen(USERS_DB_PATH, "r");
-    FILE* logFile = fopen("orderLog", "w");
     User current, myUser;
     int /*i = 0,*/ ok = 0/*, min_length = 0*/;
 
@@ -647,30 +646,21 @@ void order__users_db()
         */
 
         //If both last names are the same
-        if (!strcmp(current.lName, myUser.lName))
+        if (!strcmp(string_upper(current.lName), string_upper(myUser.lName)))
         {
-            fprintf(logFile, "\t\tSame last names, comparing first names\n");
-            if (strcmp(myUser.fName, current.fName) <= 0)
-            {
-                fprintf(logFile, "\t\tUser %s %s must be placed before user %s %s\n", myUser.fName, myUser.lName, current.fName, current.lName);
-                ok = 1;
-            }
+            if (strcmp(string_upper(myUser.fName), string_upper(current.fName)) <= 0)
+                if (strcmp(myUser.email, current.email)) //Checking if compared users are not the same user
+                    ok = 1;
         } else //If names are different
         {
-            fprintf(logFile, "\t\tDifferent names\n");
-            if (strcmp(myUser.lName, current.lName) < 0)
-            {
-                fprintf(logFile, "strcmp(%s, %s) = %d\n", myUser.lName, current.lName, strcmp(myUser.lName, current.lName));
-                fprintf(logFile, "\t\tUser %s %s must be placed before user %s %s\n", myUser.fName, myUser.lName, current.fName, current.lName);
+            if (strcmp(string_upper(myUser.lName), string_upper(current.lName)) < 0)
                 ok = 1;
-            }
         }
 
 
 
         if (ok)
         {
-            fprintf(logFile, "User has been placed\n");
             store_user(myUser, TEMP_DB_PATH);
             store_user(current, TEMP_DB_PATH);
             break;
@@ -678,8 +668,6 @@ void order__users_db()
 
         store_user(current, TEMP_DB_PATH);
     }
-
-    fclose(logFile);
 
     //Copying end of database
     while (!feof(users_db))
