@@ -114,6 +114,9 @@
 	//Function that returns the same char but uppercase
 	char char_upper(const char c);
 
+	//Function that returns the same string but uppercase
+	char* string_upper(char* string);
+
 	/*###########################################################################
 	#													FUNCTIONS MACROS																	#
 	###########################################################################*/
