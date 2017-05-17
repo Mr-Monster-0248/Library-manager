@@ -40,7 +40,7 @@ int main(int argc, char** argv)
                             admin_display_book();
                             break;
                             case 1:
-                            system("echo display user admin >> test.b");
+                            admin_display_user();
                             break;
                             case 2:
                             system("echo add admin >> test.b");

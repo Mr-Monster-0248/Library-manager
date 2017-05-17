@@ -457,3 +457,20 @@ int admin_display_book()
     refresh();
     return move_arrow(width / 5 - 2, height/5, height/5 + 3);
 }
+
+int admin_display_user()
+{
+    curs_set(0);
+    int height, width, i = 0;
+    Date currentDate = current_date();
+    getmaxyx(stdscr, height, width);
+
+    clear();
+    mvprintw(height / 5, width / 5, "Display all DB (alphabetical order)");
+    mvprintw(height / 5 + 1, width / 5, "Search user by name");
+    mvprintw(height / 5 + 2, width / 5, "Search user by email");
+    mvprintw(height / 5 + 3, width / 5, "Search user by profession");
+
+    refresh();
+    return move_arrow(width / 5 - 2, height/5, height/5 + 3);
+}

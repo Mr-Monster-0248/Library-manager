@@ -49,4 +49,7 @@ int admin_interface(User myUser);
 //Admin interface for book display
 int admin_display_book();
 
+//Admin interface for user display
+int admin_display_user();
+
 #endif
