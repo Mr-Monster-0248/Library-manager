@@ -289,23 +289,16 @@ int login(User* currentUser)
         refresh();
         password_field(height/5 + 5, width/5 + 8, askedPassword); //Asking the password
 
-        fprintf(logFile, "\ttyped: \"%s\", must be \"%s\"\n", askedPassword, myUser.password);
 
         if (strcmp(askedPassword, myUser.password) == 0) //If password found
         {
             copy_User(currentUser, myUser);
-
-            fprintf(logFile, "Password match!\n\n");
-            fclose(logFile);
 
             return 1;
         }
 
         mvprintw(height/5 + 7, width/5, "Error: wrong password. %d attempts remaining", --remainingAttempts);
     }
-
-    fprintf(logFile, "Wrong password 3 times\n\n");
-    fclose(logFile);
 
     return 0;
 }
