@@ -37,25 +37,31 @@ int main(int argc, char** argv)
                         leave = 0;
                         switch (admin_interface(myUser)) {
                             case 0:
-                            admin_display_book();
+                                admin_display_book();
                             break;
+
                             case 1:
-                            admin_display_user();
+                                admin_display_user();
                             break;
+
                             case 2:
-                            system("echo add admin >> test.b");
+                                system("echo add admin >> test.b");
                             break;
+
                             case 3:
-                            system("echo Modify password admin >> test.b");
+                                system("echo Modify password admin >> test.b");
                             break;
+
                             case 4:
-                            system("echo delete account admin >> test.b");
+                                system("echo delete account admin >> test.b");
                             break;
+
                             case 5:
-                            leave = 1;
+                                leave = 1;
                             break;
+
                             default:
-                            leave = 1;
+                                leave = 1;
                             break;
                         }
                     } while(leave == 0);
