@@ -418,6 +418,7 @@ int client_interface(User myUser)
     return move_arrow(width / 5 - 2, height/5 + 6 + i, height/5 + 11 + i);
 }
 
+
 int admin_interface(User myUser)
 {
     curs_set(0);
@@ -440,6 +441,7 @@ int admin_interface(User myUser)
     return move_arrow(width / 5 - 2, height/5 + 6 + i, height/5 + 11 + i);
 }
 
+
 int admin_display_book()
 {
     curs_set(0);
@@ -455,6 +457,7 @@ int admin_display_book()
     refresh();
     return move_arrow(width / 5 - 2, height/5, height/5 + 3);
 }
+
 
 int admin_display_user()
 {
@@ -472,6 +475,7 @@ int admin_display_user()
     return move_arrow(width / 5 - 2, height/5, height/5 + 3);
 }
 
+
 int admin_add_admin()
 {
     curs_set(0);
@@ -484,4 +488,18 @@ int admin_add_admin()
 
     refresh();
     return move_arrow(width / 5 - 2, height/5, height/5 + 1);
+}
+
+
+char* get_genre()
+{
+    int height, width;
+
+    getmaxyx(stdscr, height, width);
+
+    clear_screen();
+
+
+    
+
 }
