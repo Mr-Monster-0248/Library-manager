@@ -47,10 +47,14 @@ int main(int argc, char** argv)
                                         display_book_by_code();
                                     break;
                                     case 2:
+                                        clear_screen();
                                         display_books_by_author();
+                                        press_any_key();
                                     break;
                                     case 3:
+                                        clear_screen();
                                         display_books_by_title();
+                                        press_any_key();
                                     break;
                                     default:
                                     break;
