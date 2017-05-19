@@ -52,4 +52,7 @@ int admin_display_book();
 //Admin interface for user display
 int admin_display_user();
 
+//Admin interface to add an admin
+int admin_add_admin();
+
 #endif

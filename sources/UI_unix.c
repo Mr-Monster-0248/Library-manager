@@ -472,3 +472,17 @@ int admin_display_user()
     refresh();
     return move_arrow(width / 5 - 2, height/5, height/5 + 3);
 }
+
+int admin_add_admin()
+{
+    curs_set(0);
+    int height, width;
+    getmaxyx(stdscr, height, width);
+
+    clear();
+    mvprintw(height / 5, width / 5, "Existing account");
+    mvprintw(height / 5 + 1, width / 5, "New account");
+
+    refresh();
+    return move_arrow(width / 5 - 2, height/5, height/5 + 1);
+}
