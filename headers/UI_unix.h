@@ -58,4 +58,6 @@ int admin_display_user();
 //Admin interface to add an admin
 int admin_add_admin();
 
+char* get_genre();
+
 #endif

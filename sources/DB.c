@@ -712,7 +712,7 @@ void decode_users_db(const char* filePath)
 
 void display_book_by_genre()
 {
-    char genre[3] = get_genre();
+    char* genre = get_genre();
     Book currentBook;
     FILE* books_db = fopen(BOOKS_DB_PATH, "r");
 

@@ -493,6 +493,7 @@ int admin_add_admin()
 
 char* get_genre()
 {
+    char* genre = (char*) malloc(4 * sizeof(char));
     int height, width;
 
     getmaxyx(stdscr, height, width);
@@ -500,6 +501,62 @@ char* get_genre()
     clear_screen();
 
 
-    
+    check_alloc(genre);
 
+
+    mvprintw(height/4, width/4, "Biography - BIO");
+    mvprintw(height/4 + 1, width/4, "Novel - NVL");
+    mvprintw(height/4 + 2, width/4, "Comic - CMC");
+    mvprintw(height/4 + 3, width/4, "Documentation - DOC");
+    mvprintw(height/4 + 4, width/4, "Manga - MAN");
+    mvprintw(height/4 + 5, width/4, "Kids - KID");
+    mvprintw(height/4 + 6, width/4, "Theatre - THR");
+    mvprintw(height/4 + 7, width/4, "Horror - HOR");
+    mvprintw(height/4 + 8, width/4, "Adult - ADT");
+
+    refresh();
+
+    switch(move_arrow(width/4 - 2, height/4, height/4 + 8))
+    {
+        case 0:
+            strcpy(genre, "BIO");
+        break;
+
+        case 1:
+            strcpy(genre, "NVL");
+        break;
+
+        case 2:
+            strcpy(genre, "CMC");
+        break;
+
+        case 3:
+            strcpy(genre, "DOC");
+        break;
+
+        case 4:
+            strcpy(genre, "MAN");
+        break;
+
+        case 5:
+            strcpy(genre, "KID");
+        break;
+
+        case 6:
+            strcpy(genre, "THR");
+        break;
+
+        case 7:
+            strcpy(genre, "HOR");
+        break;
+
+        case 8:
+            strcpy(genre, "ADT");
+        break;
+
+        default:
+        break;
+    }
+
+    return genre;
 }
