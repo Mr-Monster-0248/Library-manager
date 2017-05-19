@@ -37,15 +37,54 @@ int main(int argc, char** argv)
                         leave = 0;
                         switch (admin_interface(myUser)) {
                             case 0:
-                                admin_display_book();
+                                switch (admin_display_book())
+                                {
+                                    case 0:
+                                        display_book_db();
+                                        press_any_key();
+                                    break;
+                                    case 1:
+                                        display_book_by_code();
+                                    break;
+                                    case 2:
+                                        clear_screen();
+                                        display_books_by_author();
+                                        press_any_key();
+                                    break;
+                                    case 3:
+                                        clear_screen();
+                                        display_books_by_title();
+                                        press_any_key();
+                                    break;
+                                    default:
+                                    break;
+                                }
                             break;
 
                             case 1:
-                                admin_display_user();
+                                switch (admin_display_user())
+                                {
+                                    case 0:
+                                        display_all_users();
+                                        press_any_key();
+                                    break;
+                                    case 1:
+                                        search_user_by_name();
+                                        press_any_key();
+                                    break;
+                                    case 2:
+                                        search_user_by_email();
+                                        press_any_key();
+                                    break;
+                                    case 3:
+                                    break;
+                                    default:
+                                    break;
+                                }
                             break;
 
                             case 2:
-                                system("echo add admin >> test.b");
+                                admin_add_admin();
                             break;
 
                             case 3:

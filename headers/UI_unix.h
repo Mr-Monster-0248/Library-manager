@@ -25,6 +25,9 @@ int new_user_form(User *newUser, const int isAdmin);
 //So that the curses.h clear() function is accessible from everywhere
 void clear_screen();
 
+//pause de interface and wait for the user to press a key
+void press_any_key();
+
 //display every informations for a specified book
 void display_book_info(Book myBook);
 
@@ -51,5 +54,8 @@ int admin_display_book();
 
 //Admin interface for user display
 int admin_display_user();
+
+//Admin interface to add an admin
+int admin_add_admin();
 
 #endif
