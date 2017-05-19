@@ -444,8 +444,7 @@ int admin_interface(User myUser)
 int admin_display_book()
 {
     curs_set(0);
-    int height, width, i = 0;
-    Date currentDate = current_date();
+    int height, width;
     getmaxyx(stdscr, height, width);
 
     clear();
@@ -461,8 +460,7 @@ int admin_display_book()
 int admin_display_user()
 {
     curs_set(0);
-    int height, width, i = 0;
-    Date currentDate = current_date();
+    int height, width;
     getmaxyx(stdscr, height, width);
 
     clear();
