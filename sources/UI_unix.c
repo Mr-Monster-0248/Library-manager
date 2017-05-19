@@ -309,6 +309,16 @@ void clear_screen()
     clear();
 }
 
+void press_any_key()
+{
+    int height, width;
+    getmaxyx(stdscr, height, width);
+
+    move(height / 2, width*3/4);
+    disp("Press any key to continue...");
+    getch();
+}
+
 
 void display_book_info(Book myBook)
 {

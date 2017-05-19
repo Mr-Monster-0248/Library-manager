@@ -37,7 +37,21 @@ int main(int argc, char** argv)
                         leave = 0;
                         switch (admin_interface(myUser)) {
                             case 0:
-                                admin_display_book();
+                                switch (admin_display_book())
+                                {
+                                    case 0:
+                                        display_book_db();
+                                        press_any_key();
+                                    break;
+                                    case 1:
+                                    break;
+                                    case 2:
+                                    break;
+                                    case 3:
+                                    break;
+                                    default:
+                                    break;
+                                }
                             break;
 
                             case 1:
@@ -45,7 +59,7 @@ int main(int argc, char** argv)
                             break;
 
                             case 2:
-                                system("echo add admin >> test.b");
+                                admin_add_admin();
                             break;
 
                             case 3:
