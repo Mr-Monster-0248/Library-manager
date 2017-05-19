@@ -96,7 +96,7 @@ char* read_line(FILE* file)
         line[i++] = readChar;
     }
 
-    line[i + 1] = '\0'; //To end the string
+    line[i] = '\0'; //To end the string
 
     return line;
 }
@@ -268,6 +268,7 @@ Book load_next_book(FILE* books_db)
     fscanf(books_db, "%d", &(myBook.copies));
     fscanf(books_db, "%d", &(myBook.available));
     fgetc(books_db); //To read the empty line
+    fgetc(books_db); //To read the other empty line
 
     return myBook;
 }
@@ -277,6 +278,8 @@ void display_book_db()
 {
     FILE* books_db = fopen(BOOKS_DB_PATH, "r");
     check_alloc(books_db);
+
+    clear_screen();
 
     while (!feof(books_db))
         display_book_info(load_next_book(books_db));
