@@ -69,10 +69,12 @@ int main(int argc, char** argv)
                                         press_any_key();
                                     break;
                                     case 1:
+                                        clear_screen();
                                         search_user_by_name();
                                         press_any_key();
                                     break;
                                     case 2:
+                                        clear_screen();
                                         search_user_by_email();
                                         press_any_key();
                                     break;
