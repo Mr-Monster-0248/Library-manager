@@ -44,10 +44,13 @@ int main(int argc, char** argv)
                                         press_any_key();
                                     break;
                                     case 1:
+                                        display_book_by_code();
                                     break;
                                     case 2:
+                                        display_books_by_author();
                                     break;
                                     case 3:
+                                        display_books_by_title();
                                     break;
                                     default:
                                     break;
@@ -55,7 +58,25 @@ int main(int argc, char** argv)
                             break;
 
                             case 1:
-                                admin_display_user();
+                                switch (admin_display_user())
+                                {
+                                    case 0:
+                                        display_all_users();
+                                        press_any_key();
+                                    break;
+                                    case 1:
+                                        search_user_by_name();
+                                        press_any_key();
+                                    break;
+                                    case 2:
+                                        search_user_by_email();
+                                        press_any_key();
+                                    break;
+                                    case 3:
+                                    break;
+                                    default:
+                                    break;
+                                }
                             break;
 
                             case 2:
