@@ -307,6 +307,7 @@ int login(User* currentUser)
 void clear_screen()
 {
     clear();
+    refresh();
 }
 
 

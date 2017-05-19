@@ -88,7 +88,7 @@ char* read_line(FILE* file)
         readChar = fgetc(file);
 
         if (readChar == '\n' || feof(file))
-        break;
+            break;
 
         line = (char*) realloc(line, (i + 2) * sizeof(char));
         check_alloc(line);
@@ -707,4 +707,24 @@ void decode_users_db(const char* filePath)
     fclose(decoded_db);
 
     printf("Dabase successfully decoded!\n");
+}
+
+
+void display_book_by_genre()
+{
+    char genre[3] = get_genre();
+    Book currentBook;
+    FILE* books_db = fopen(BOOKS_DB_PATH, "r");
+
+    check_alloc(books_db);
+
+    while (!feof(books_db))
+    {
+        currentBook = load_next_book(books_db);
+
+        if (genre[0] == currentBook.code[0] && genre[1] == currentBook.code[1] && genre[2] == currentBook.code[2])
+            display_book_info(currentBook);
+    }
+
+    fclose(books_db);
 }

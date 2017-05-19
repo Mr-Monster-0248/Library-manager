@@ -92,4 +92,7 @@ void order__users_db();
 //Function to decode the users database and print the result in the file which path is given as parameter
 void decode_users_db(const char* filePath);
 
+//Function that displays all the book of an asked genre
+void display_book_by_genre();
+
 #endif
