@@ -441,7 +441,7 @@ int admin_interface(User myUser)
 }
 
 
-int admin_display_book()
+void admin_display_book()
 {
     curs_set(0);
     int height, width;
@@ -454,11 +454,35 @@ int admin_display_book()
     mvprintw(height / 5 + 3, width / 5, "Display by genre");
 
     refresh();
-    return move_arrow(width / 5 - 2, height/5, height/5 + 3);
+
+    switch (move_arrow(width / 5 - 2, height/5, height/5 + 3))
+    {
+        case 0:
+            display_book_db();
+            press_any_key();
+        break;
+        case 1:
+            clear_screen();
+            display_book_by_code();
+            press_any_key();
+        break;
+        case 2:
+            clear_screen();
+            display_books_by_author();
+            press_any_key();
+        break;
+        case 3:
+            clear_screen();
+            display_books_by_title();
+            press_any_key();
+        break;
+        default:
+        break;
+    }
 }
 
 
-int admin_display_user()
+void admin_display_user()
 {
     curs_set(0);
     int height, width;
@@ -471,7 +495,28 @@ int admin_display_user()
     mvprintw(height / 5 + 3, width / 5, "Search user by profession");
 
     refresh();
-    return move_arrow(width / 5 - 2, height/5, height/5 + 3);
+
+    switch (move_arrow(width / 5 - 2, height/5, height/5 + 3))
+    {
+        case 0:
+            display_all_users();
+            press_any_key();
+        break;
+        case 1:
+            clear_screen();
+            search_user_by_name();
+            press_any_key();
+        break;
+        case 2:
+            clear_screen();
+            search_user_by_email();
+            press_any_key();
+        break;
+        case 3:
+        break;
+        default:
+        break;
+    }
 }
 
 
@@ -486,7 +531,24 @@ int admin_add_admin()
     mvprintw(height / 5 + 1, width / 5, "New account");
 
     refresh();
+
     return move_arrow(width / 5 - 2, height/5, height/5 + 1);
+}
+
+int client_search_book()
+{
+    curs_set(0);
+    int height, width;
+    getmaxyx(stdscr, height, width);
+
+    clear();
+    mvprintw(height / 5, width / 5, "Display all books");
+    mvprintw(height / 5 + 1, width / 5, "Search book by title");
+    mvprintw(height / 5 + 2, width / 5, "Search book by author");
+    mvprintw(height / 5 + 3, width / 5, "Search book by code");
+
+    refresh();
+    return move_arrow(width / 5 - 2, height/5, height/5 + 3);
 }
 
 

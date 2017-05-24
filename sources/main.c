@@ -37,52 +37,11 @@ int main(int argc, char** argv)
                         leave = 0;
                         switch (admin_interface(myUser)) {
                             case 0:
-                                switch (admin_display_book())
-                                {
-                                    case 0:
-                                        display_book_db();
-                                        press_any_key();
-                                    break;
-                                    case 1:
-                                        display_book_by_code();
-                                    break;
-                                    case 2:
-                                        clear_screen();
-                                        display_books_by_author();
-                                        press_any_key();
-                                    break;
-                                    case 3:
-                                        clear_screen();
-                                        display_books_by_title();
-                                        press_any_key();
-                                    break;
-                                    default:
-                                    break;
-                                }
+                                admin_display_book();
                             break;
 
                             case 1:
-                                switch (admin_display_user())
-                                {
-                                    case 0:
-                                        display_all_users();
-                                        press_any_key();
-                                    break;
-                                    case 1:
-                                        clear_screen();
-                                        search_user_by_name();
-                                        press_any_key();
-                                    break;
-                                    case 2:
-                                        clear_screen();
-                                        search_user_by_email();
-                                        press_any_key();
-                                    break;
-                                    case 3:
-                                    break;
-                                    default:
-                                    break;
-                                }
+                                admin_display_user();
                             break;
 
                             case 2:
@@ -90,11 +49,11 @@ int main(int argc, char** argv)
                             break;
 
                             case 3:
-                                system("echo Modify password admin >> test.b");
+                                //system("echo Modify password admin >> test.b");
                             break;
 
                             case 4:
-                                system("echo delete account admin >> test.b");
+                                //system("echo delete account admin >> test.b");
                             break;
 
                             case 5:
@@ -114,23 +73,25 @@ int main(int argc, char** argv)
                     switch (client_interface(myUser)) //pour le moment change ici pour test admin_interface PS. elle marche très bien
                     {
                         case 0:
-                            system("echo Borrow book >> test.b");
+                            //system("echo Borrow book >> test.b");
                         break;
 
                         case 1:
-                            system("echo return book >> test.b");
+                            //system("echo return book >> test.b");
                         break;
 
                         case 2:
-                            system("echo search a book >> test.b");
+                            clear_screen();
+                            client_search_book();
+                            press_any_key();
                         break;
 
                         case 3:
-                            system("echo Modify password >> test.b");
+                            //system("echo Modify password >> test.b");
                         break;
 
                         case 4:
-                            system("echo delete account >> test.b");
+                            //system("echo delete account >> test.b");
                         break;
 
                         case 5:

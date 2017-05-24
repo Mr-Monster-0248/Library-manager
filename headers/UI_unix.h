@@ -50,13 +50,16 @@ int client_interface(User myUser);
 int admin_interface(User myUser);
 
 //Admin interface for book display
-int admin_display_book();
+void admin_display_book();
 
 //Admin interface for user display
-int admin_display_user();
+void admin_display_user();
 
 //Admin interface to add an admin
 int admin_add_admin();
+
+//Client interface to search a book
+int client_search_book();
 
 char* get_genre();
 

@@ -9,7 +9,7 @@ BBooks
     ==> Type code
 2. Return a book
     ==> Type code
-3. Search a book
+3. Search a book **
     3.1) By author
     3.2) By title
     3.3) By code
