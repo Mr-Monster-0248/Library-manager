@@ -1,17 +1,17 @@
 Hello fName lName
 Date (current date)
 
-1. Display books
-    1.1) Display all DB
-    1.2) Display by genre (genre code)
+1. Display books **
+    1.1) Display all DB **
+    1.2) Display by genre (genre code) *
     1.3) Display by author
     1.4) Display by title
-2. Display users
-    2.1) Display all DB (alphabetic order)
-    2.2) Search user by name
-    2.3) Search user by email
+2. Display users **
+    2.1) Display all DB (alphabetic order) **
+    2.2) Search user by name *
+    2.3) Search user by email **
     2.4) Search user by profession
-3. Add admin
+3. Add admin **
     3.1) Existing account
     3.2) New account
 4. Modify password
@@ -22,4 +22,8 @@ Date (current date)
         ==> If unreturned books
             =>This client has unreturned books
         => "Are you sure you want to delete this account (y/n)"
-6. Logout
+6. Logout **
+
+
+* started
+** done

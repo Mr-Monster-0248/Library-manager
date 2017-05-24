@@ -22,10 +22,10 @@ To do so you need:
 * For Linux
     * Download our project
     * Place you, with a terminal, in the project file
-    * Use this commande: <code>gcc sources/main.c sources/auth.c sources/DB.c sources/basic_functions.c sources/crypting.c sources/UI_unix.c -o ExeTest -Wall -lcurses</code>
+    * Use this commande: <code>gcc sources/main.c sources/auth.c sources/DB.c sources/dates.c /basic_functions.c sources/crypting.c sources/UI_unix.c -o ExeTest -Wall -lcurses</code>
 * For Windows
     * Download our project
     * Place you, with the cmd, in the project file
-    * Use this commande <code>gcc sources/main.c sources/auth.c sources/DB.c sources/basic_functions.c sources/crypting.c sources/UI_windows.c -o ExeTest -Wall -lcurses</code>
+    * Use this commande <code>gcc sources/main.c sources/auth.c sources/DB.c sources/dates.c sources/basic_functions.c sources/crypting.c sources/UI_windows.c -o ExeTest -Wall -lcurses</code>
 
 **NOTE: the Windows version isn't as nice as the Linux one**
