@@ -421,7 +421,7 @@ int client_interface(User myUser)
 int admin_interface(User myUser)
 {
     curs_set(0);
-    int height, width, i = 0;
+    int height, width;
     Date currentDate = current_date();
     getmaxyx(stdscr, height, width);
 

@@ -58,7 +58,7 @@ int login_menu()
     int choice = 0;
 
     do {
-        CLEAR_SCREEN();
+        clear_screen();
         printf("\n\n\n\t1. Create new account\n\t2. Login (existing account)\n\t3. Exit the program\n\n\n");
         printf("Your choice (numeric value): ");
         if (scanf("%d", &choice) == 1)
@@ -81,6 +81,18 @@ void UI_init()
 void UI_stop()
 {
     //This function has actually no interest for windows, but is needed for the program to compile
+}
+
+
+int take_choice(int a)
+{
+    int res;
+    printf("Your choice: ");
+    do {
+        scanf("%d", &res);
+    } while(res < 1 || res > a);
+
+    return res - 1;
 }
 
 
@@ -218,4 +230,220 @@ char* ask_string_info(const char* message)
 
         clear_screen();
     }
+}
+
+
+int client_interface(User myUser)
+{
+    int i = 0;
+    Book borrowedBooks;
+    Date currentDate = current_date();
+
+    clear_screen();
+    printf("\t\t===== %s %s =====\n", myUser.fName, myUser.lName);
+    printf("\t\t%2d/%2d/%4d\n\n", currentDate.month, currentDate.day, currentDate.year);
+    if(myUser.numberBBooks == 0)
+    {
+        printf("You have no borroed books\n\n");
+    }
+    else
+    {
+        for(i = 0; i < myUser.numberBBooks; i++)
+        {
+            borrowedBooks = get_book_by_code(myUser.borrowedBooks[i]);
+
+            if(compare_dates(myUser.returnDates[i], currentDate) == 2)
+            {
+                printf("%s by %s (%s)\n", borrowedBooks.title, borrowedBooks.author, borrowedBooks.code);
+            }
+            else
+            {
+                printf("%s by %s (%s)\n", borrowedBooks.title, borrowedBooks.author, borrowedBooks.code);
+            }
+        }
+    }
+    printf("1. Borrow a book\n");
+    printf("2. Return a book\n");
+    printf("3. Search a book\n");
+    printf("4. Modify password\n");
+    printf("5. Delete my account\n");
+    printf("6. Logout\n");
+
+    return take_choice(6);
+}
+
+
+int admin_interface(User myUser)
+{
+    Date currentDate = current_date();
+
+    clear_screen();
+    printf("\t\t===== %s %s =====\n", myUser.fName, myUser.lName);
+    printf("\t\t%2d/%2d/%4d\n\n", currentDate.month, currentDate.day, currentDate.year);
+
+    printf("1. Display books\n");
+    printf("2. Display User\n");
+    printf("3. Add Admin\n");
+    printf("4. Modify password\n");
+    printf("5. Delete my account\n");
+    printf("6. Logout\n");
+
+    return take_choice(6);
+}
+
+
+void admin_display_book()
+{
+    clear_screen();
+    printf("1. Display all DB");
+    printf("2. Display by genre (genre code)");
+    printf("3. Display by autor");
+    printf("4. Display by genre");
+
+    switch (take_choice(4))
+    {
+        case 0:
+            display_book_db();
+            press_any_key();
+        break;
+        case 1:
+            clear_screen();
+            display_book_by_code();
+            press_any_key();
+        break;
+        case 2:
+            clear_screen();
+            display_books_by_author();
+            press_any_key();
+        break;
+        case 3:
+            clear_screen();
+            display_books_by_title();
+            press_any_key();
+        break;
+        default:
+        break;
+    }
+}
+
+
+void admin_display_user()
+{
+    clear_screen();
+    printf("1. Display all DB (alphabetical order)");
+    printf("2. Search user by name");
+    printf("3. Search user by email");
+    printf("4. Search user by profession");
+
+    switch (take_choice(4))
+    {
+        case 0:
+            display_all_users();
+            press_any_key();
+        break;
+        case 1:
+            clear_screen();
+            search_user_by_name();
+            press_any_key();
+        break;
+        case 2:
+            clear_screen();
+            search_user_by_email();
+            press_any_key();
+        break;
+        case 3:
+        break;
+        default:
+        break;
+    }
+}
+
+
+int admin_add_admin()
+{
+    clear_screen();
+    printf("1. Existing account");
+    printf("2. New account");
+
+    return take_choice(2);
+}
+
+
+int client_search_book()
+{
+    clear_screen();
+    printf("1. Display all books");
+    printf("2. Search book by title");
+    printf("3. Search book by author");
+    printf("4. Search book by code");
+
+    return take_choice(4);
+}
+
+
+char* get_genre()
+{
+    char* genre = (char*) malloc(4 * sizeof(char));
+    int height, width;
+
+    getmaxyx(stdscr, height, width);
+
+    clear_screen();
+
+    check_alloc(genre);
+
+
+    printf("1. Biography - BIO");
+    printf("2. Novel - NVL");
+    printf("3. Comic - CMC");
+    printf("4. Documentation - DOC");
+    printf("5. Manga - MAN");
+    printf("6. Kids - KID");
+    printf("7. Theatre - THR");
+    printf("8. Horror - HOR");
+    printf("9. Adult - ADT");
+
+    switch(take_choice(9))
+    {
+        case 0:
+            strcpy(genre, "BIO");
+        break;
+
+        case 1:
+            strcpy(genre, "NVL");
+        break;
+
+        case 2:
+            strcpy(genre, "CMC");
+        break;
+
+        case 3:
+            strcpy(genre, "DOC");
+        break;
+
+        case 4:
+            strcpy(genre, "MAN");
+        break;
+
+        case 5:
+            strcpy(genre, "KID");
+        break;
+
+        case 6:
+            strcpy(genre, "THR");
+        break;
+
+        case 7:
+            strcpy(genre, "HOR");
+        break;
+
+        case 8:
+            strcpy(genre, "ADT");
+        break;
+
+        default:
+        break;
+    }
+
+    return genre;
 }
