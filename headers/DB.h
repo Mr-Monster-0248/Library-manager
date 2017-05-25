@@ -95,4 +95,10 @@ void decode_users_db(const char* filePath);
 //Function that displays all the book of an asked genre
 void display_book_by_genre();
 
+//Function that checks if a given email is already used by a user in the database, returns 1 if yes, 0 if no
+int verif_if_existing_user(const char* emailAdress);
+
+//Function to delete an account of the users database
+void delete_account(User myUser);
+
 #endif

@@ -110,13 +110,21 @@ int new_user_form(User *newUser, const int* isAdmin)
 
     fflush(stdin);
 
+    strcpy(newUser->email, "defaultemail");
+
     //Asking E-mail adress
     do {
         CLEAR_SCREEN();
+        if (verif_if_existing_user(newUser->email))
+            printf("\nThis email is already used by someone!\n");
+
+        if (check_if_email(newUser->email))
+            printf("ERROR: \"%s\" cannot be considered an email adress\n", newUser->email);
+
         printf("\n\n\t\tEnter your E-mail adress: ");
         fgets(newUser->email, 69, stdin);
         fflush(stdin);
-    } while(strcmp(newUser->email, "") == 0);
+    } while(!strcmp(newUser->email, "") || !check_if_email(newUser->email) || verif_if_existing_user(newUser->email));
 
     //Asking first name
     do {
@@ -446,4 +454,29 @@ char* get_genre()
     }
 
     return genre;
+}
+
+
+void interface_delete_account(User myUser)
+{
+    char c = 'a';
+
+    clear_screen();
+
+    printf("\n\n\n\t\tAre you sure you want to delete your account ? (y/n)\n");
+
+    fflush(stdin);
+    while (c != 'y' && c != 'Y' && c != 'n' && c != 'N')
+    {
+        c = getchar();
+        fflush(stdin);
+    }
+
+    if (c == 'n' || c == 'N')
+        return;
+
+    if (myUser.numberBBooks == 0) //Deleting the account only if the user has no currently borrowed books
+        delete_account(myUser);
+    else
+        printf("ERROR: cannot delete this account, it has unreturned books\n");
 }

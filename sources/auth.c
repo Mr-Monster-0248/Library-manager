@@ -40,3 +40,18 @@ int find_user(char* emailToFind, User* getUser)
 
     return 1;
 }
+
+
+int check_if_email(const char* toCheck)
+{
+    int numberAts = 0, i = 0;
+
+    for (i = 0; i < strlen(toCheck); i++)
+        if (toCheck[i] == '@')
+            numberAts++;
+
+    if (numberAts != 1)
+        return 0;
+
+    return 1;
+}

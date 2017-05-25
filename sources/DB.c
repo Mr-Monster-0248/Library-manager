@@ -449,6 +449,8 @@ void display_all_users()
     User myUser;
     int i = 0;
 
+    clear_screen();
+
     while (!feof(users_db))
     {
         myUser = load_next_user(users_db);
@@ -730,4 +732,56 @@ void display_book_by_genre()
     }
 
     fclose(books_db);
+}
+
+
+int verif_if_existing_user(const char* emailAdress)
+{
+    FILE* users_db = fopen(USERS_DB_PATH, "r");
+    check_alloc(users_db);
+
+    while (!feof(users_db))
+        if (!strcmp(load_next_user(users_db).email, emailAdress))
+        {
+            fclose(users_db);
+            return 1;
+        }
+
+    fclose(users_db);
+    return 0;
+}
+
+
+void delete_account(User myUser)
+{
+    User currentUser;
+    FILE* users_db = fopen(USERS_DB_PATH, "r");
+
+
+    check_alloc(users_db);
+
+
+    while (!feof(users_db))
+    {
+        currentUser = load_next_user(users_db);
+
+        //If user loaded same as the one to remove
+        if (!strcmp(currentUser.email, myUser.email))
+            continue;
+
+        store_user(currentUser, TEMP_DB_PATH);
+    }
+
+    fclose(users_db);
+
+    remove(USERS_DB_PATH);
+    rename(TEMP_DB_PATH, USERS_DB_PATH);
+}
+
+
+void change_password(User* myUser)
+{
+    clear_screen();
+    disp("\n\nEnter your new password: ");
+    password_field(3, 0, myUser->password);
 }

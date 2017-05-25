@@ -157,6 +157,22 @@ int new_user_form(User *newUser, const int isAdmin)
         refresh();
         getnstr(newUser->email, 69);
         remove_end_char(newUser->email, ' ');
+
+
+
+        mvprintw(2 * height/5 + 2, width/4, "                                                  ");
+
+        if (check_if_email(newUser->email))
+        {
+            mvprintw(2 * height/5 + 2, width/4, "ERROR: \"%s\" cannot be considered an email adress", newUser->email);
+            continue;
+        }
+
+
+        if (verif_if_existing_user(newUser->email))
+        {
+            mvprintw(2 * height/5 + 2, width/4, "This email is already used by someone!");
+        }
     } while (strcmp(newUser->email, "") == 0); //While verify email function not implemented
 
     //Asking first name
@@ -438,7 +454,7 @@ int admin_interface(User myUser)
 
     refresh();
 
-    return move_arrow(width / 5 - 2, height/5 + 6 + i, height/5 + 11 + i);
+    return move_arrow(width / 5 - 2, height/5 + 6, height/5 + 11);
 }
 
 
@@ -622,4 +638,29 @@ char* get_genre()
     }
 
     return genre;
+}
+
+
+void interface_delete_account(User myUser)
+{
+    char c = 'a';
+    int height, width;
+
+    getmaxyx(height, width, stdscr);
+
+    clear_screen();
+
+    mvprintw(height/2, (width - strlen("Are you sure you want to delete your account ? (y/n)"))/2, "Are you sure you want to delete your account ? (y/n)");
+
+    noecho();
+    while (c != 'y' && c != 'Y' && c != 'n' && c != 'N')
+        c = getch();
+
+    if (c == 'n' || c == 'N')
+        return;
+
+    if (myUser.numberBBooks == 0) //Deleting the account only if the user has no currently borrowed books
+        delete_account(myUser);
+    else
+        mvprintw(height/2, (width/2 - strlen("ERROR: cannot delete this account, it has unreturned books"))/2, "ERROR: cannot delete this account, it has unreturned books");
 }

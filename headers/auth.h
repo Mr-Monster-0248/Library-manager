@@ -25,9 +25,6 @@
   //Function that asks the data for a new user to store in the database
   int ask_new_user_data(User *newUser);
 
-  //Function to ask a password (returns the string typed) and hide it while typing
-  void password_field(int yPos, int xPos, char* password);
-
   //Function to get a user by his email
   /* RETURN VALUES
     - 0: no user found
@@ -41,5 +38,8 @@
     0: user not found after 3 attempts, or wrong password 3 times (currentUser may contain the user)
   */
   int login(User* currentUser);
+
+  //Function that returns 1 if a given string has the form of an email adress, 0 if not
+  int check_if_email(const char* toCheck);
 
 #endif
