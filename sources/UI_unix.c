@@ -310,6 +310,7 @@ void clear_screen()
     refresh();
 }
 
+
 void press_any_key()
 {
     int height, width;
@@ -534,6 +535,7 @@ int admin_add_admin()
 
     return move_arrow(width / 5 - 2, height/5, height/5 + 1);
 }
+
 
 int client_search_book()
 {
