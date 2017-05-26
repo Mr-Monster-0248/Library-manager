@@ -49,7 +49,7 @@ int main(int argc, char** argv)
                             break;
 
                             case 3:
-                                change_password(&myUser);
+                                change_password(myUser.password);
                             break;
 
                             case 4:
@@ -87,7 +87,7 @@ int main(int argc, char** argv)
                         break;
 
                         case 3:
-                            change_password(&myUser);
+                            change_password(myUser.password);
                         break;
 
                         case 4:

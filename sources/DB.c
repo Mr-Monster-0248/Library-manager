@@ -779,9 +779,9 @@ void delete_account(User myUser)
 }
 
 
-void change_password(User* myUser)
+void change_password(char* password)
 {
     clear_screen();
-    disp("\n\nEnter your new password: ");
-    password_field(3, 0, myUser->password);
+    disp("\n\nEnter your new password:");
+    password_field(3, 0, password);
 }

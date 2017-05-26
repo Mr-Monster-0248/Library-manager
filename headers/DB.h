@@ -102,6 +102,6 @@ int verif_if_existing_user(const char* emailAdress);
 void delete_account(User myUser);
 
 //Function to change password
-void change_password(User* myUser);
+void change_password(char* password);
 
 #endif
