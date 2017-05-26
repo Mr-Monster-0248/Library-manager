@@ -49,11 +49,11 @@ int main(int argc, char** argv)
                             break;
 
                             case 3:
-                                //system("echo Modify password admin >> test.b");
+                                change_password(&myUser);
                             break;
 
                             case 4:
-                                //system("echo delete account admin >> test.b");
+                                delete_account(myUser);
                             break;
 
                             case 5:
@@ -87,11 +87,11 @@ int main(int argc, char** argv)
                         break;
 
                         case 3:
-                            //system("echo Modify password >> test.b");
+                            change_password(&myUser);
                         break;
 
                         case 4:
-                            //system("echo delete account >> test.b");
+                            delete_account(myUser);
                         break;
 
                         case 5:

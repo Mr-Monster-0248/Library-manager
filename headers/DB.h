@@ -101,4 +101,7 @@ int verif_if_existing_user(const char* emailAdress);
 //Function to delete an account of the users database
 void delete_account(User myUser);
 
+//Function to change password
+void change_password(User* myUser);
+
 #endif
