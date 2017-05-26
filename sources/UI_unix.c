@@ -646,7 +646,7 @@ void interface_delete_account(User myUser)
     char c = 'a';
     int height, width;
 
-    getmaxyx(height, width, stdscr);
+    getmaxyx(stdscr, height, width);
 
     clear_screen();
 
